@@ -1,3 +1,7 @@
-/mysql-connector-java-5.1.44-bin.jar
-/application/
 /FXML/
+/application/
+<<<<<<< HEAD
+/FXML/
+=======
+/mysql-connector-java-5.1.44-bin.jar
+>>>>>>> f3c7aa555f35f9a6184ee30b9cb636ba59d617db
