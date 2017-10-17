@@ -1,10 +1,8 @@
 package FXML;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.Database;
-import application.Producto;
 import application.Session;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,18 +16,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 
 public class LoginController implements Initializable {
-	private boolean AdminEnable = false;
-	private boolean GerenteEnable = false;
-	private boolean EmployeeEnable = false;
-	private String Rol = "";
+	
 //fx:id
 	@FXML
 	TextField userLoginText;
@@ -46,39 +39,17 @@ public class LoginController implements Initializable {
 
 	@FXML
 	private void login_Btn(){
-		/*
-		System.out.println("Pressed button");
-		System.out.println(userLoginText.getText());
-		System.out.println(userLoginPass.getText());
-		System.out.println(comboType.getSelectionModel().getSelectedItem());
-		*/
 		checkEmployee(userLoginText.getText(),userLoginPass.getText(),comboType.getSelectionModel().getSelectedItem()); // esto va ver si es valido y ejecutara lo necesario para cambiar de stage
 		Session s = Session.getInstance();
-		s.describeUser();getClass();
-		Database d;
+		s.describeUser();
 		try {
-			d = new Database();
-			ArrayList<Producto> productos = d.fetchProductos();
-			
-			
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ProductView.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ManageTables.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initStyle(StageStyle.DECORATED);
-            stage.setTitle("ABC");
+            stage.setTitle("Productos");
             stage.setScene(new Scene(root1));  
-            FlowPane flowPaneProductsDisplay = (FlowPane) root1.lookup("#flowPaneProductsDisplay"); 
-            for(Producto p : productos){
-				//System.out.println(p.descripcion);
-				Button b = new Button(p.descripcion);
-				b.setWrapText(true);
-				b.setTextAlignment(TextAlignment.CENTER);
-				b.setPrefHeight(74);
-				b.setPrefWidth(120);
-				
-				flowPaneProductsDisplay.getChildren().add(b);
-			}
             stage.show();
 	       // System.out.println();
 		
@@ -90,27 +61,7 @@ public class LoginController implements Initializable {
 		
 	}
 		
-	@FXML
-	private void AdminEnabler(){
-		AdminEnable = true;
-		GerenteEnable = false;
-		EmployeeEnable = false;
-		Rol = "Administrador";
-	}
-	@FXML
-	private void GerenteEnabler(){
-		AdminEnable = false;
-		GerenteEnable = true;
-		EmployeeEnable = false;
-		Rol = "Gerente";
-	}
-	@FXML
-	private void EmployeeEnabler(){
-		AdminEnable = false;
-		GerenteEnable = false;
-		EmployeeEnable = true;
-		Rol = "Empleado";
-	}
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
