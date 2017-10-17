@@ -1,6 +1,9 @@
 package FXML;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import application.Database;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -39,6 +42,8 @@ public class LoginController implements Initializable {
 	@FXML
 	private void login_Btn(){
 		System.out.println("Pressed button");
+		System.out.println(userLoginText.getText());
+		System.out.println(userLoginPass.getText());
 		checkEmployee(); // esto va ver si es valido y ejecutara lo necesario para cambiar de stage
 	}
 		
@@ -70,19 +75,21 @@ public class LoginController implements Initializable {
 		
 	}
 	private void checkEmployee() { // buscar en BD para ver que el usuario y pass y rol existen y concue
-		// checar base de datos
-		//String rol = (Select e.Rol from Employees e where e.).toString(); Algo asi
-		//String user = (Select e.CodigoUsuario from Employees e where e.nombre = userLoginText.getText()).toString(); Algo asi
-		//String pass = (Select e.Password from Employees e where pass = userLoginPass.getText()).toString(); Algo asi
-		// if(rol.equals(Rol)):
-		//ejecutar btnLogin(user,pass);
-		//else userLoginText.setText("Incorrect user or pass");
+		try {
+			Database d = new Database();
+			d.fetchData();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 	private void btnLogin(String user, String pass) { // hacer validacion de datos del usuario
 		if(userLoginText.getText().equals(user) && userLoginPass.getText().equals(pass)) {
 			//hide LoginStage
 			//Show userStages
+			System.out.println(userLoginText.getText().equals(user)+" "+userLoginText.getText().equals(pass));
 		}else {
 			userLoginText.setText("Incorrect user or pass");
 			userLoginPass.setText("");
