@@ -19,13 +19,19 @@ public class ManageTablesController implements javafx.fxml.Initializable {
 	@FXML
 	Button btnAddTable;
 	
+	@FXML 
+	public void btnAddTable(){
+		System.out.println("nueva mesa");
+	}
+	
 	@FXML
 	Button btnCloseTableManagement;
 	
 	
+	
 	@Override	
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		System.out.println("inicializado todo");
 		
 	}
 	
