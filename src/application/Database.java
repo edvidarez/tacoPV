@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Database {
@@ -17,7 +19,7 @@ public class Database {
     		conObj = DriverManager.getConnection("jdbc:mysql://138.197.202.114:3306/tacos","edvidarez","123123123");
     		stObj = conObj.createStatement();
     	}
-    	public boolean validateUser(String user, String pass,String role) throws Exception {
+    	public int validateUser(String user, String pass,String role) throws Exception {
     		int role_ = -1;
     		System.out.println(role);
     		switch (role) {
@@ -37,8 +39,13 @@ public class Database {
     		ResultSet rs = ps.executeQuery();
 
     		if(rs.next())
-    			return true;
-    		return false;
+    			return rs.getInt(1);
+    		return 0;
+    	}
+    	public ResultSet getVentas() throws SQLException {
+    		String query = "select s.nombre, v.fecha, u.email, v.subtotal,v.iva, v.total from venta v, sucursal s, user u where v.ID_Sucursal = s.ID_Sucursal and v.vendedor = u.ID_User";
+    		return  stObj.executeQuery(query);
+
     	}
     	public void fetchData() throws Exception
     	{
@@ -53,13 +60,49 @@ public class Database {
     			System.out.println("role : "+rs.getInt("role"));
     		}
     	}
+    	public String getToday() {
+    		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+    		LocalDateTime now = LocalDateTime.now();
+    		return dtf.format(now);
+    	}
+    	public void pagarMesa(Mesa me) throws SQLException {
+    		int id_venta = 0;
+    		String generatedColumns[] = { "ID_Venta" };
+    		String query = "INSERT INTO venta (ID_Sucursal, fecha, vendedor, subTotal, iva, total) values (1,?,?,?,?,?)";
+    		ps = (PreparedStatement) conObj.prepareStatement(query,generatedColumns);
+    		ps.setString(1, getToday());
+    		ps.setInt(2, Session.getInstance().getId());
+    		ps.setFloat(3, me.getCuenta());
+    		ps.setFloat(4, (float) (me.getCuenta()*0.16));
+    		ps.setFloat(5, (float) (me.getCuenta()*1.16));
+    		System.out.println(ps);
+    		ps.executeUpdate();
+    		ResultSet rs = ps.getGeneratedKeys();
+    		if (rs.next()) {
+    		    id_venta = rs.getInt(1);
+    		}
+    		System.out.println("El id que se inserto fue: "+id_venta);
+    		int i=0;
+    		for(Producto p : me.productos)
+    		{
+    			query = "insert into venta_d (ID_Venta, ID_Producto, cantidad, precio) values(? , ? , ?, ?)";
+    			ps = (PreparedStatement) conObj.prepareStatement(query);
+        		ps.setInt(1,id_venta);
+        		ps.setInt(2,p.idProducto);
+        		ps.setInt(3, 1);
+        		ps.setFloat(4, p.precio);
+        		System.out.println(ps);
+        		ps.executeUpdate();
+    			i++;
+    		}
+    	}
     	public ArrayList<Producto> fetchProductos() throws Exception{
     		String query = "select * from productos";
     		ResultSet rs = stObj.executeQuery(query);
     		ArrayList<Producto> productos = new ArrayList<Producto>();
     		while(rs.next())
     		{
-    			Producto p = new Producto(rs.getString("descripcion"), rs.getFloat("precio"));
+    			Producto p = new Producto(rs.getString("descripcion"), rs.getFloat("precio"), rs.getInt("ID_Producto"));
     			productos.add(p);
     		}
     		return productos;

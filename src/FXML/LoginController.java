@@ -17,9 +17,8 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 
 public class LoginController implements Initializable {
@@ -44,16 +43,36 @@ public class LoginController implements Initializable {
 		Session s = Session.getInstance();
 		s.describeUser();
 		try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(Main.class.getResource("../FXML/ManageTables.fxml"));
+			if(s.getRole_()==1) { //admin
+				FXMLLoader fxmlLoader = new FXMLLoader();
+	            fxmlLoader.setLocation(Main.class.getResource("../FXML/AdminVentas.fxml"));
+	            
+	            BorderPane root1 = (BorderPane) fxmlLoader.load();
+	            Stage stage = new Stage();
+	            //stage.initModality(Modality.WINDOW_MODAL);
+	            //stage.initStyle(StageStyle.DECORATED);
+	            stage.setTitle("Admin");
+	            stage.setScene(new Scene(root1));  
+	            stage.show();
+	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
+	    	    stage2.close();
+			}
+			else
+			if(s.getRole_() ==3){ //empleado
+				FXMLLoader fxmlLoader = new FXMLLoader();
+	            fxmlLoader.setLocation(Main.class.getResource("../FXML/ManageTables.fxml"));
+	            
+	            AnchorPane root1 = (AnchorPane) fxmlLoader.load();
+	            Stage stage = new Stage();
+	            //stage.initModality(Modality.WINDOW_MODAL);
+	            //stage.initStyle(StageStyle.DECORATED);
+	            stage.setTitle("Productos");
+	            stage.setScene(new Scene(root1));  
+	            stage.show();
+	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
+	    	    stage2.close();
+			}
             
-            AnchorPane root1 = (AnchorPane) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initStyle(StageStyle.DECORATED);
-            stage.setTitle("Productos");
-            stage.setScene(new Scene(root1));  
-            stage.show();
 	       // System.out.println();
 		
 
@@ -78,7 +97,7 @@ public class LoginController implements Initializable {
 		comboType.getItems().addAll(options);
 		
 	}
-	private void createSession(String user,String role) {
+	private void createSession(String user,String role,int uid) {
 		int role_ = -1;
 		switch (role) {
 		case "Admin": role_ = 1;
@@ -92,14 +111,16 @@ public class LoginController implements Initializable {
 		session.setRole(role);
 		session.setRole_(role_);
 		session.setUser(user);
+		session.setId(uid);
 	}
 	private void checkEmployee(String user,String pass,String role) { // buscar en BD para ver que el usuario y pass y rol existen y concue
 		try {
 			Database d = new Database();
-			if(d.validateUser(user,pass,role))
+			int uid = d.validateUser(user,pass,role);
+			if(uid!=0)
 			{
 				System.out.println("Valido");
-				createSession(user,role);
+				createSession(user,role,uid);
 			}
 			else
 			{

@@ -4,6 +4,7 @@ public class Session {
 
 	   private static Session session = new Session( );
 	   private static String user;
+	   private static int Id;
 	
 	   
 	public static String getUser() {
@@ -14,7 +15,7 @@ public class Session {
 		Session.user = user;
 	}
 
-	public static int getRole_() {
+	public int getRole_() {
 		return role_;
 	}
 
@@ -47,4 +48,12 @@ public class Session {
 	   public void describeUser( ) {
 	      System.out.println("The user is:"+user+" and its role is "+role);
 	   }
+
+	public int getId() {
+		return Id;
+	}
+
+	public void setId(int id) {
+		Id = id;
+	}
 	}

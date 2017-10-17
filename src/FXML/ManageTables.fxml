@@ -17,12 +17,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btnAddTable" layoutX="14.0" layoutY="416.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="127.0" text="Agregar cuenta">
+            <Button fx:id="btnAddTable" layoutX="14.0" layoutY="416.0" onAction="#btnAddTable" mnemonicParsing="false" prefHeight="40.0" prefWidth="127.0" text="Agregar cuenta">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnCloseTableManagement" layoutX="469.0" layoutY="416.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="109.0" text="Salir">
+            <Button fx:id="btnCloseTableManagement" layoutX="469.0" layoutY="416.0" onAction="#btnClose" mnemonicParsing="false" prefHeight="40.0" prefWidth="109.0" text="Salir">
                <font>
                   <Font size="14.0" />
                </font>

@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.Database;
+import application.Manager;
 import application.Producto;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -37,6 +39,24 @@ public class ProductViewController implements Initializable {
             for(Producto p : productos){
 				//System.out.println(p.descripcion);
 				Button b = new Button(p.descripcion);
+				int pid = p.idProducto;
+				b.setOnAction(new EventHandler<ActionEvent>() {
+		            @Override
+		            public void handle(ActionEvent event) {
+		                Manager m = Manager.getInstance();
+		                Producto prod = new Producto(b.getText(), 0,pid);
+		                
+		                for(Producto pr : productos){
+		                	if(pr.descripcion == prod.descripcion)
+		                	{
+		                		prod.precio = pr.precio;
+		                	}
+		                }
+		                m.currentMesa.productos.add(prod);
+		                m.currentMesa.olp.add(prod.descripcion);
+		                System.out.println("added "+prod.descripcion);
+		            }
+		        });
 				b.setWrapText(true);
 				b.setTextAlignment(TextAlignment.CENTER);
 				b.setPrefHeight(74);

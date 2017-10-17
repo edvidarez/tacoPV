@@ -1,16 +1,27 @@
 package application;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
 
 public class Manager {
 
 	   private static Manager manager = new Manager( );
-	   ArrayList<Mesa> Mesas;
+	   public ObservableList<Button> olb = FXCollections.observableArrayList ();
+	   
+
+	   public int nMesas = 1;
+	   
+	   public ArrayList<Mesa> Mesas = new ArrayList<Mesa>();
+	   public Mesa currentMesa = null; 
 	   /* A private Constructor prevents any other
 	    * class from instantiating.
 	    */
 	   private Manager() {
-		   Mesas = new ArrayList<Mesa>();
+		   
 	   }
 
 	   /* Static 'instance' method */
@@ -30,7 +41,16 @@ public class Manager {
 		   for(Mesa me : Mesas) {
 			   if(me.numero == numero)
 			   {
-				   System.out.println(me.getCuenta());
+				   System.out.println("El total a pagar es: "+me.getCuenta());
+				   
+				   try {
+					Database d = new Database();
+					d.pagarMesa(me);
+				} catch (SQLException | ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				   
 			   }
 			   return true;
 		   }
