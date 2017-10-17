@@ -12,7 +12,7 @@ public class Database {
 
     	public Database() throws SQLException , ClassNotFoundException {
     		Class.forName("com.mysql.jdbc.Driver"); /*Loading Driver class for JDBC*/
-    		conObj = DriverManager.getConnection("jdbc:mysql://localhost:3306/mytestdb","root","");
+    		conObj = DriverManager.getConnection("jdbc:mysql://138.197.202.114:3306/tacos","edvidarez","123123123");
     		stObj = conObj.createStatement();
     	}
 
@@ -23,8 +23,10 @@ public class Database {
 
     		while(rs.next())
     		{
-    			System.out.println("Name : "+rs.getString("name"));
-    			System.out.println("age : "+rs.getInt("age"));
+    			System.out.println("id : "+rs.getInt("ID_User"));
+    			System.out.println("email : "+rs.getString("email"));
+    			System.out.println("pass : "+rs.getString("pass"));
+    			System.out.println("role : "+rs.getInt("role"));
     		}
     	}
 
