@@ -11,12 +11,18 @@
    <children>
       <HBox alignment="CENTER" layoutX="77.0" layoutY="101.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="76.0" AnchorPane.topAnchor="100.0">
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="448.0" styleClass="back_groundError" stylesheets="@application.css">
+            <AnchorPane prefHeight="200.0" prefWidth="448.0" style="-fx-border-radius: 10;" styleClass="back_groundError" stylesheets="@application.css">
                <children>
                   <VBox alignment="CENTER" layoutX="129.0" layoutY="34.0" prefHeight="95.0" prefWidth="242.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="76.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="51.0" prefWidth="228.0" styleClass="label-header" text="ERROR" />
-                        <Label prefHeight="46.0" prefWidth="226.0" text="Verifique usuario y contrasena" />
+                        <Label alignment="CENTER" prefHeight="51.0" prefWidth="228.0" styleClass="label-header" text="ERROR">
+                           <font>
+                              <Font size="24.0" />
+                           </font></Label>
+                        <Label prefHeight="45.0" prefWidth="244.0" text="Verifique usuario y contraseña">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
                      </children>
                   </VBox>
                </children>
@@ -25,17 +31,18 @@
       </HBox>
       <HBox alignment="CENTER" layoutX="210.0" layoutY="49.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="188.0">
          <children>
-            <Label text="Algo no esta bien" textFill="WHITE">
+            <Label text="Algo no esta bien" textFill="#8d8c8c">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="271.0" layoutY="338.0" prefHeight="26.0" prefWidth="77.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="253.0">
-         <children>
-            <Button mnemonicParsing="false" text="Help" />
-         </children>
-      </HBox>
+      <HBox alignment="CENTER" layoutX="271.0" layoutY="338.0" prefHeight="26.0" prefWidth="77.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="253.0" />
+      <Button fx:id="btnReturnToLogin" layoutX="215.0" layoutY="300.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="188.0" text="Regresar al menú">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
