@@ -1,16 +1,20 @@
 package FXML;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.Database;
+import application.Producto;
+import application.Session;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 
 
@@ -27,13 +31,7 @@ public class LoginController implements Initializable {
 	@FXML
 	Button loginBtn;
 	@FXML
-	SplitMenuButton loginUserMenu;
-	@FXML
-	MenuItem TypeAdm;
-	@FXML
-	MenuItem TypeGer;
-	@FXML
-	MenuItem TypeEmp;
+	ComboBox<String> comboType;
 	@FXML
 	Hyperlink loginForgPass;
 	@FXML
@@ -41,10 +39,28 @@ public class LoginController implements Initializable {
 
 	@FXML
 	private void login_Btn(){
+		/*
 		System.out.println("Pressed button");
 		System.out.println(userLoginText.getText());
 		System.out.println(userLoginPass.getText());
-		checkEmployee(); // esto va ver si es valido y ejecutara lo necesario para cambiar de stage
+		System.out.println(comboType.getSelectionModel().getSelectedItem());
+		*/
+		checkEmployee(userLoginText.getText(),userLoginPass.getText(),comboType.getSelectionModel().getSelectedItem()); // esto va ver si es valido y ejecutara lo necesario para cambiar de stage
+		Session s = Session.getInstance();
+		s.describeUser();getClass();
+		Database d;
+		try {
+			d = new Database();
+			ArrayList<Producto> productos = d.fetchProductos();
+			for(Producto p : productos){
+				System.out.println(p.descripcion);
+			}
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 		
 	@FXML
@@ -72,12 +88,42 @@ public class LoginController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		ObservableList<String> options = 
+			    FXCollections.observableArrayList(
+			        "Admin",
+			        "Gerente",
+			        "Empleado"
+			    );
+		comboType.getItems().addAll(options);
 		
 	}
-	private void checkEmployee() { // buscar en BD para ver que el usuario y pass y rol existen y concue
+	private void createSession(String user,String role) {
+		int role_ = -1;
+		switch (role) {
+		case "Admin": role_ = 1;
+		break;
+		case "Gerente": role_ = 2;
+		break;
+		case "Empleado": role_ = 3;
+		break;
+		}
+		Session session = Session.getInstance();
+		session.setRole(role);
+		session.setRole_(role_);
+		session.setUser(user);
+	}
+	private void checkEmployee(String user,String pass,String role) { // buscar en BD para ver que el usuario y pass y rol existen y concue
 		try {
 			Database d = new Database();
-			d.fetchData();
+			if(d.validateUser(user,pass,role))
+			{
+				System.out.println("Valido");
+				createSession(user,role);
+			}
+			else
+			{
+				System.out.println("Invalido");
+			}
 		
 		} catch (Exception e) {
 			e.printStackTrace();

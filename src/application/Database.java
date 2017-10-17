@@ -5,17 +5,42 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import com.mysql.jdbc.PreparedStatement;
 
 public class Database {
     	Connection conObj;
     	Statement stObj;
-
+    	PreparedStatement ps = null;
     	public Database() throws SQLException , ClassNotFoundException {
     		Class.forName("com.mysql.jdbc.Driver"); /*Loading Driver class for JDBC*/
     		conObj = DriverManager.getConnection("jdbc:mysql://138.197.202.114:3306/tacos","edvidarez","123123123");
     		stObj = conObj.createStatement();
     	}
+    	public boolean validateUser(String user, String pass,String role) throws Exception {
+    		int role_ = -1;
+    		System.out.println(role);
+    		switch (role) {
+    		case "Admin": role_ = 1;
+    		break;
+    		case "Gerente": role_ = 2;
+    		break;
+    		case "Empleado": role_ = 3;
+    		break;
+    		}
+    		System.out.println(role_);
+    		String query = "select * from user where email = ? and pass = ? and role = ?";
+    		ps = (PreparedStatement) conObj.prepareStatement(query);
+    		ps.setString(1,user);
+    		ps.setString(2,pass);
+    		ps.setInt(3, role_);
+    		ResultSet rs = ps.executeQuery();
 
+    		if(rs.next())
+    			return true;
+    		return false;
+    	}
     	public void fetchData() throws Exception
     	{
     		String query = "select * from user";
@@ -29,7 +54,17 @@ public class Database {
     			System.out.println("role : "+rs.getInt("role"));
     		}
     	}
-
+    	public ArrayList<Producto> fetchProductos() throws Exception{
+    		String query = "select * from productos";
+    		ResultSet rs = stObj.executeQuery(query);
+    		ArrayList<Producto> productos = new ArrayList<Producto>();
+    		while(rs.next())
+    		{
+    			Producto p = new Producto(rs.getString("descripcion"), rs.getFloat("precio"));
+    			productos.add(p);
+    		}
+    		return productos;
+    	}
     public void insertData(String name, int age) throws SQLException 
     {
         if(name!=null && age!=0)
