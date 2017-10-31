@@ -42,6 +42,7 @@ public class ManageTablesController implements Initializable {
             public void handle(ActionEvent event) {
             	int index = Integer.parseInt(b.getText().substring(4));
             	m.currentMesa = m.Mesas.get(index-1);
+            	System.out.println(m.currentMesa.numero);
             	try {
                     FXMLLoader fxmlLoader = new FXMLLoader();
                     fxmlLoader.setLocation(Main.class.getResource("../FXML/TableDetail.fxml"));
@@ -56,10 +57,15 @@ public class ManageTablesController implements Initializable {
             }
         });
 		m.olb.add(b);
-		m.newMesa(m.nMesas);
-		listViewManageTable.setItems(m.olb);
+		System.out.println(m.nMesas);
+		if(m.newMesa(m.nMesas))
+		{
+			System.out.println("added NEW Table");
+			listViewManageTable.setItems(m.olb);
+			
+			m.nMesas++;
+		}
 		
-		m.nMesas++;
 	}
 	@FXML
 	private void btnClose() {

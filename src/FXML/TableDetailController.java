@@ -47,6 +47,7 @@ public class TableDetailController implements javafx.fxml.Initializable {
 	@FXML
 	private void btnPayTableBill() {
 		Manager m = Manager.getInstance();
+		System.out.println("pay");
 		m.pagarMesa(m.currentMesa.numero);
 		Stage stage2 = (Stage) btnPayTableBill.getScene().getWindow();
  	   	stage2.close();

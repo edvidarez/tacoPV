@@ -12,6 +12,7 @@ public class Mesa {
 	public Mesa(int numero) {
 		this.productos = new ArrayList<Producto>();
 		this.numero = numero;
+		System.out.println("nueva mesa");
 	}
 	float getCuenta() {
 		float cuenta = 0;
