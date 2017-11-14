@@ -9,10 +9,10 @@
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../application/css/application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../src/application/css/application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="labelAltausuarioTitulo" layoutX="23.0" layoutY="14.0" styleClass="label-header" stylesheets="@../application/css/application2.css" text="ALTA DE USUARIO" />
-      <Label fx:id="labelContraMenu" layoutX="29.0" layoutY="86.0" styleClass="label2" stylesheets="@../application/css/application2.css" text="Email:" />
+      <Label fx:id="labelEmailMenu" layoutX="29.0" layoutY="86.0" styleClass="label2" stylesheets="@../application/css/application2.css" text="Email:" />
       <TextField fx:id="textboxEmail" layoutX="157.0" layoutY="76.0" prefHeight="37.0" prefWidth="422.0" />
       <Label fx:id="labelContrasenaMenu" layoutX="23.0" layoutY="127.0" styleClass="label2" stylesheets="@../application/css/application2.css" text="Contraseña:" />
       <TextField fx:id="textboxContrasena" layoutX="157.0" layoutY="119.0" prefHeight="37.0" prefWidth="422.0" />
@@ -35,7 +35,7 @@
             </Lighting>
          </effect>
       </Button>
-      <Button fx:id="boonCancelar" cacheShape="false" layoutX="388.0" layoutY="329.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="108.0" text="Cancelar" textFill="#a12626" textOverrun="CLIP">
+      <Button fx:id="botonCancelar" cacheShape="false" layoutX="388.0" layoutY="329.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="48.0" prefWidth="108.0" text="Cancelar" textFill="#a12626" textOverrun="CLIP">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>

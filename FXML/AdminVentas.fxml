@@ -72,7 +72,7 @@
             <Label id="labelAdminVentasAdministrator" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="165.0" styleClass="button2" stylesheets="@../application/css/application2.css" text="Administrador" textAlignment="CENTER" />
             <ImageView id="imageViewAdminVentasPerfil" fx:id="imageViewAdmin" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../application/img/userData.png" />
+                  <Image url="@../src/application/img/userData.png" />
                </image>
             </ImageView>
             <Button id="buttonAdminVentas" fx:id="btnAdminExit" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="130.0" text="Salir" textAlignment="CENTER">

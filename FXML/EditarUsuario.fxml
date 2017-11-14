@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" styleClass="background" stylesheets="@../src/application/css/application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="labelEditarusuarioTitulo" layoutX="33.0" layoutY="24.0" styleClass="label-header" stylesheets="@../src/application/css/application2.css" text="EDITAR DE USUARIO" />
+      <Label fx:id="labelEmailMenu" layoutX="41.0" layoutY="140.0" styleClass="label2" stylesheets="@../src/application/css/application2.css" text="Email:" />
+      <TextField fx:id="textboxEmail" layoutX="169.0" layoutY="130.0" prefHeight="37.0" prefWidth="422.0" />
+      <Label fx:id="labelContrasenaMenu" layoutX="35.0" layoutY="181.0" styleClass="label2" stylesheets="@../src/application/css/application2.css" text="Contraseña:" />
+      <TextField fx:id="textboxContrasena" layoutX="169.0" layoutY="173.0" prefHeight="37.0" prefWidth="422.0" />
+      <Label fx:id="labelRfcMenu" layoutX="35.0" layoutY="225.0" styleClass="label2" stylesheets="@../src/application/css/application2.css" text="R.FC:" />
+      <TextField fx:id="textboxRfc" layoutX="169.0" layoutY="217.0" prefHeight="37.0" prefWidth="422.0" />
+      <Label fx:id="labelNombreusuarioMenu" layoutX="35.0" layoutY="269.0" styleClass="label2" stylesheets="@../src/application/css/application2.css" text="Nombre de usuario:" />
+      <TextField fx:id="textboxNombreusuario" layoutX="169.0" layoutY="261.0" prefHeight="37.0" prefWidth="422.0" />
+      <Label fx:id="labelRolMenu" layoutX="39.0" layoutY="314.0" styleClass="label2" stylesheets="@../src/application/css/application2.css" text="Rol:" />
+      <TextField fx:id="textboxRol" layoutX="169.0" layoutY="306.0" prefHeight="37.0" prefWidth="422.0" />
+      <SplitMenuButton fx:id="splitmenyElegirusuario" layoutX="39.0" layoutY="74.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="552.0" styleClass="menu-bar" stylesheets="@../src/application/css/application2.css" text="Elegir Usuario">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </SplitMenuButton>
+      <Button fx:id="botonAceptar" cacheShape="false" layoutX="60.0" layoutY="376.0" mnemonicParsing="false" onAction="#insert_user" prefHeight="48.0" prefWidth="108.0" text="Aceptar" textFill="#a12626" textOverrun="CLIP">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <Lighting diffuseConstant="1.35" specularConstant="0.0" specularExponent="12.56" surfaceScale="1.73">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant color="LIME" />
+               </light>
+            </Lighting>
+         </effect>
+      </Button>
+      <Button fx:id="botonCancelar" cacheShape="false" layoutX="417.0" layoutY="376.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="48.0" prefWidth="108.0" text="Cancelar" textFill="#a12626" textOverrun="CLIP">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <Lighting diffuseConstant="1.35" specularConstant="0.0" specularExponent="12.56" surfaceScale="1.73">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant color="RED" />
+               </light>
+            </Lighting>
+         </effect>
+      </Button>
+      <Button fx:id="botonCancelar1" cacheShape="false" layoutX="223.0" layoutY="376.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="48.0" prefWidth="155.0" text="Eliminar Usuario" textFill="#a12626" textOverrun="CLIP">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <Lighting diffuseConstant="1.35" specularConstant="0.0" specularExponent="12.56" surfaceScale="1.73">
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant color="#ffbc00" />
+               </light>
+            </Lighting>
+         </effect>
+      </Button>
+   </children>
+</AnchorPane>
