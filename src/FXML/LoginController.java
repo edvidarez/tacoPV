@@ -1,21 +1,28 @@
 package FXML;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import application.Database;
+import application.Main;
+import application.Session;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 
 public class LoginController implements Initializable {
-	private boolean AdminEnable = false;
-	private boolean GerenteEnable = false;
-	private boolean EmployeeEnable = false;
-	private String Rol = "";
+	
 //fx:id
 	@FXML
 	TextField userLoginText;
@@ -24,65 +31,119 @@ public class LoginController implements Initializable {
 	@FXML
 	Button loginBtn;
 	@FXML
-	SplitMenuButton loginUserMenu;
+	Label incorrecto;
 	@FXML
-	MenuItem TypeAdm;
-	@FXML
-	MenuItem TypeGer;
-	@FXML
-	MenuItem TypeEmp;
+	ComboBox<String> comboType;
 	@FXML
 	Hyperlink loginForgPass;
 	@FXML
 	Label loginLabel;
+	@FXML
+	Label errorRed;
 
 	@FXML
 	private void login_Btn(){
-		System.out.println("Pressed button");
-		checkEmployee(); // esto va ver si es valido y ejecutara lo necesario para cambiar de stage
+		checkEmployee(userLoginText.getText(),userLoginPass.getText(),comboType.getSelectionModel().getSelectedItem()); // esto va ver si es valido y ejecutara lo necesario para cambiar de stage
+		Session s = Session.getInstance();
+		s.describeUser();
+		try {
+			if(s.getRole_()==1) { //admin
+				FXMLLoader fxmlLoader = new FXMLLoader();
+	            fxmlLoader.setLocation(Main.class.getResource("../FXML/AdminVentas.fxml"));
+	            
+	            BorderPane root1 = (BorderPane) fxmlLoader.load();
+	            Stage stage = new Stage();
+	            //stage.initModality(Modality.WINDOW_MODAL);
+	            //stage.initStyle(StageStyle.DECORATED);
+	            stage.setTitle("Admin");
+	            stage.setScene(new Scene(root1));  
+	            stage.show();
+	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
+	    	    stage2.close();
+			}
+			else
+			if(s.getRole_() ==3){ //empleado
+				FXMLLoader fxmlLoader = new FXMLLoader();
+	            fxmlLoader.setLocation(Main.class.getResource("../FXML/ManageTables.fxml"));
+	            
+	            AnchorPane root1 = (AnchorPane) fxmlLoader.load();
+	            Stage stage = new Stage();
+	            //stage.initModality(Modality.WINDOW_MODAL);
+	            //stage.initStyle(StageStyle.DECORATED);
+	            stage.setTitle("Productos");
+	            stage.setScene(new Scene(root1));  
+	            stage.show();
+	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
+	    	    stage2.close();
+			}
+            
+	       // System.out.println();
+		
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 		
-	@FXML
-	private void AdminEnabler(){
-		AdminEnable = true;
-		GerenteEnable = false;
-		EmployeeEnable = false;
-		Rol = "Administrador";
-	}
-	@FXML
-	private void GerenteEnabler(){
-		AdminEnable = false;
-		GerenteEnable = true;
-		EmployeeEnable = false;
-		Rol = "Gerente";
-	}
-	@FXML
-	private void EmployeeEnabler(){
-		AdminEnable = false;
-		GerenteEnable = false;
-		EmployeeEnable = true;
-		Rol = "Empleado";
-	}
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		ObservableList<String> options = 
+			    FXCollections.observableArrayList(
+			        "Admin",
+			        "Gerente",
+			        "Empleado"
+			    );
+		comboType.getItems().addAll(options);
 		
 	}
-	private void checkEmployee() { // buscar en BD para ver que el usuario y pass y rol existen y concue
-		// checar base de datos
-		//String rol = (Select e.Rol from Employees e where e.).toString(); Algo asi
-		//String user = (Select e.CodigoUsuario from Employees e where e.nombre = userLoginText.getText()).toString(); Algo asi
-		//String pass = (Select e.Password from Employees e where pass = userLoginPass.getText()).toString(); Algo asi
-		// if(rol.equals(Rol)):
-		//ejecutar btnLogin(user,pass);
-		//else userLoginText.setText("Incorrect user or pass");
+	private void createSession(String user,String role,int uid) {
+		int role_ = -1;
+		switch (role) {
+		case "Admin": role_ = 1;
+		break;
+		case "Gerente": role_ = 2;
+		break;
+		case "Empleado": role_ = 3;
+		break;
+		}
+		Session session = Session.getInstance();
+		session.setRole(role);
+		session.setRole_(role_);
+		session.setUser(user);
+		session.setId(uid);
+	}
+	private void checkEmployee(String user,String pass,String role) { // buscar en BD para ver que el usuario y pass y rol existen y concue
+		try {
+			Database d = new Database();
+			int uid = d.validateUser(user,pass,role);
+			if(uid!=0)
+			{
+				System.out.println("Valido");
+				createSession(user,role,uid);
+			}
+			else
+			{
+				System.out.println("Invalido");
+				incorrecto.setText("Datos incorrectos");
+			}
+		
+		} catch (Exception e) {
+			errorRed.setText("Verifique sus datos y el acceso a la red");
+			e.printStackTrace();
+		}
+		
 		
 	}
 	private void btnLogin(String user, String pass) { // hacer validacion de datos del usuario
 		if(userLoginText.getText().equals(user) && userLoginPass.getText().equals(pass)) {
 			//hide LoginStage
 			//Show userStages
+			System.out.println(userLoginText.getText().equals(user)+" "+userLoginText.getText().equals(pass));
 		}else {
 			userLoginText.setText("Incorrect user or pass");
 			userLoginPass.setText("");

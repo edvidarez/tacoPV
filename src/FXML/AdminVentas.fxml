@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="context-menu" stylesheets="@../application/css/application.css" BorderPane.alignment="CENTER">
          <children>
@@ -56,17 +56,16 @@
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane prefHeight="300.0" prefWidth="439.0" stylesheets="@../application/css/application.css">
+            <ScrollPane prefHeight="367.0" prefWidth="643.0" stylesheets="@../application/css/application.css">
                <content>
-                  <TableView id="adminTable" fx:id="tableViewAdmin" prefHeight="291.0" prefWidth="631.0" tableMenuButtonVisible="true">
+                  <TableView id="adminTable" fx:id="tableViewAdmin" prefHeight="510.0" prefWidth="1116.0">
                     <columns>
-                      <TableColumn id="AdminIdEmp" prefWidth="75.0" text="ID" />
-                        <TableColumn id="AdminRolEmp" prefWidth="75.0" text="Rol" />
-                      <TableColumn id="AdminEmpName" prefWidth="98.0" text="Empleado" />
-                        <TableColumn prefWidth="-1.0" text="Telefono" />
-                        <TableColumn id="AdminEmpDom" prefWidth="75.0" text="Domicilio" />
-                        <TableColumn id="AdminEmpEmail" prefWidth="72.0" text="E-mail" />
-                        <TableColumn id="AdminEmpCuenta" prefWidth="119.0" text="Cuenta bancaria" />
+                      <TableColumn id="AdminIdEmp" editable="false" prefWidth="129.0" text="Sucursal" />
+                        <TableColumn id="AdminRolEmp" prefWidth="205.0" text="Fecha" />
+                      <TableColumn id="AdminEmpName" prefWidth="184.0" text="Empleado" />
+                        <TableColumn minWidth="0.0" prefWidth="153.0" text="SubTotal" />
+                        <TableColumn id="AdminEmpDom" prefWidth="204.0" text="Iva" />
+                        <TableColumn id="AdminEmpEmail" prefWidth="219.0" text="Total" />
                     </columns>
                   </TableView>
                </content>
@@ -75,7 +74,7 @@
       </VBox>
    </center>
    <left>
-      <VBox prefHeight="300.0" prefWidth="161.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="396.0" prefWidth="161.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="TOP_CENTER" contentDisplay="CENTER" styleClass="button2" stylesheets="@../application/css/application2.css" text="Administrador" />
             <ImageView fx:id="imageViewAdmin" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">

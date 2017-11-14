@@ -19,7 +19,7 @@
    <top>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="context-menu" stylesheets="@../application/css/application.css" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar id="AdminMenuBar" HBox.hgrow="ALWAYS">
+            <MenuBar id="AdminMenuBar" fx:id="menuBarAdmin" HBox.hgrow="ALWAYS">
               <menus>
                 <Menu id="AdminFile" mnemonicParsing="false" text="File">
                   <items>
@@ -58,7 +58,7 @@
          <children>
             <ScrollPane prefHeight="300.0" prefWidth="439.0" stylesheets="@../application/css/application.css">
                <content>
-                  <TableView id="adminTable" prefHeight="291.0" prefWidth="631.0" tableMenuButtonVisible="true">
+                  <TableView id="adminTable" fx:id="tableViewAdmin" prefHeight="291.0" prefWidth="631.0" tableMenuButtonVisible="true">
                     <columns>
                       <TableColumn id="AdminIdEmp" prefWidth="75.0" text="ID" />
                         <TableColumn id="AdminRolEmp" prefWidth="75.0" text="Rol" />
@@ -78,12 +78,12 @@
       <VBox prefHeight="300.0" prefWidth="161.0" BorderPane.alignment="CENTER">
          <children>
             <Label alignment="TOP_CENTER" contentDisplay="CENTER" styleClass="button2" stylesheets="@../application/css/application2.css" text="Administrador" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageViewAdmin" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../application/img/userData.png" />
                </image>
             </ImageView>
-            <Button id="AdminExitBtn" alignment="TOP_CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" text="Salir" textAlignment="CENTER">
+            <Button id="AdminExitBtn" fx:id="btnAdminExit" alignment="TOP_CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" text="Salir" textAlignment="CENTER">
                <padding>
                   <Insets left="50.0" right="50.0" />
                </padding>

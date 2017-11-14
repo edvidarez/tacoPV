@@ -13,11 +13,11 @@
       <Label layoutX="221.0" layoutY="14.0" styleClass="label-header" stylesheets="@../application/css/application2.css" text="Facturar" textAlignment="CENTER" />
       <AnchorPane layoutX="29.0" layoutY="81.0" prefHeight="264.0" prefWidth="546.0" styleClass="back_factura" stylesheets="@../application/css/application2.css">
          <children>
-            <TextField layoutX="14.0" layoutY="26.0" promptText="Nombre de cliente" />
-            <TextField layoutX="199.0" layoutY="26.0" promptText="RFC" />
+            <TextField fx:id="tfClientName" layoutX="14.0" layoutY="26.0" promptText="Nombre de cliente" />
+            <TextField fx:id="tfClientRfc" layoutX="199.0" layoutY="26.0" promptText="RFC" />
             <ScrollPane layoutX="14.0" layoutY="55.0" prefHeight="203.0" prefWidth="518.0">
                <content>
-                  <TableView prefHeight="202.0" prefWidth="499.0">
+                  <TableView fx:id="tableViewInvoices" prefHeight="202.0" prefWidth="499.0">
                     <columns>
                       <TableColumn prefWidth="75.0" text="Cantidad" />
                       <TableColumn prefWidth="75.0" text="Producto" />
@@ -29,12 +29,12 @@
                   </TableView>
                </content>
             </ScrollPane>
-            <TextField layoutX="385.0" layoutY="26.0" prefHeight="26.0" prefWidth="147.0" promptText="Forma de pago" />
+            <TextField fx:id="tfPaymentMethod" layoutX="385.0" layoutY="26.0" prefHeight="26.0" prefWidth="147.0" promptText="Forma de pago" />
             <Label layoutX="15.0" layoutY="9.0" text="Cliente" />
             <Label layoutX="200.0" layoutY="9.0" text="RFC" />
             <Label layoutX="386.0" layoutY="9.0" text="Forma de pago" />
          </children>
       </AnchorPane>
-      <Button layoutX="246.0" layoutY="353.0" mnemonicParsing="false" styleClass="button2" stylesheets="@../application/css/application2.css" text="Generar" />
+      <Button fx:id="btnGenerateInvoice" layoutX="246.0" layoutY="353.0" mnemonicParsing="false" styleClass="button2" stylesheets="@../application/css/application2.css" text="Generar" />
    </children>
 </AnchorPane>

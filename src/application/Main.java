@@ -1,7 +1,7 @@
 package application;
 	
 import java.io.IOException;
-import FXML.LoginController;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -35,6 +35,7 @@ public class Main extends Application {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("../FXML/tacoAppFXML.fxml"));
+            
             rootLayout = (AnchorPane) loader.load();
 
             // Show the scene containing the root layout.
