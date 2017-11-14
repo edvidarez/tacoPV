@@ -62,7 +62,8 @@ public class LoginController implements Initializable {
 	            //stage.initModality(Modality.WINDOW_MODAL);
 	            //stage.initStyle(StageStyle.DECORATED);
 	            stage.setTitle("Admin");
-	            stage.setScene(new Scene(root1));  
+	            stage.setScene(new Scene(root1)); 
+	            stage.setResizable(false);
 	            stage.show();
 	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
 	    	    stage2.close();

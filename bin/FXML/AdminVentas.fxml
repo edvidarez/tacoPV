@@ -14,38 +14,30 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="borderPaneAdminVentasMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="context-menu" stylesheets="@../application/css/application.css" BorderPane.alignment="CENTER">
+      <HBox alignment="TOP_CENTER" pickOnBounds="false" prefHeight="26.0" prefWidth="600.0" styleClass="context-menu" stylesheets="@../application/css/application.css" BorderPane.alignment="CENTER">
          <children>
-            <MenuBar id="AdminMenuBar" fx:id="menuBarAdmin" HBox.hgrow="ALWAYS">
+            <MenuBar id="menuBarAdminVentasMenu" fx:id="menuBarAdmin" HBox.hgrow="ALWAYS">
               <menus>
-                <Menu id="AdminFile" mnemonicParsing="false" text="File">
+                <Menu id="menuAdminVentasLenguaje" mnemonicParsing="false" text="Lenguaje">
                   <items>
-                    <MenuItem id="AdminFileClose" mnemonicParsing="false" text="Close" />
+                      <MenuItem id="menuItemAdminVentasEspañol" mnemonicParsing="false" text="Español" />
+                        <MenuItem id="menuItemAdminVentasIngles" mnemonicParsing="false" text="Inglés" />
                   </items>
                 </Menu>
-                  <Menu id="AdminOption" mnemonicParsing="false" text="Opciones">
-                    <items>
-                        <MenuItem id="AdminOptPerf" mnemonicParsing="false" text="Perfil" />
-                      <MenuItem id="AdminOptReg" mnemonicParsing="false" text="Region" />
-                        <MenuItem id="AdminOptUpdate" mnemonicParsing="false" text="Check for updates" />
-                    </items>
+                  <Menu id="menuAdminVentasRegion" mnemonicParsing="false" text="Region">
+                     <items>
+                        <MenuItem id="menuItemAdminVentasPesos" mnemonicParsing="false" text="Pesos" />
+                        <MenuItem id="menuItemAdminVentasDolares" mnemonicParsing="false" text="Dolares" />
+                     </items>
                   </Menu>
-                <Menu id="AdminUser" mnemonicParsing="false" text="Usuarios">
+                <Menu id="menuAdminVentasUsuarios" mnemonicParsing="false" text="Usuarios">
                   <items>
-                        <MenuItem id="AdminUserDespl" mnemonicParsing="false" text="Desplegar usuarios" />
-                    <MenuItem id="AdminUserAdd" mnemonicParsing="false" text="Agregar usuario" />
-                        <MenuItem id="AdminUserEdit" mnemonicParsing="false" text="Modificar usuario" />
-                        <MenuItem id="AdminUserDelete" mnemonicParsing="false" text="Eliminar usuario" />
-                  </items>
-                </Menu>
-                <Menu id="AdminHelp" mnemonicParsing="false" text="Help">
-                  <items>
-                        <MenuItem id="AdminHelpTuto" mnemonicParsing="false" text="Tutorial" />
-                        <MenuItem id="AdminHelpSup" mnemonicParsing="false" text="Soporte" />
-                    <MenuItem id="AdminHelpAbout" mnemonicParsing="false" text="About" />
+                    <MenuItem id="menuItemAdminVentasAgregarUsuario" mnemonicParsing="false" text="Agregar usuario" />
+                        <MenuItem id="menuItemAdminVentasModificarUsuario" mnemonicParsing="false" text="Modificar usuario" />
                   </items>
                 </Menu>
               </menus>
@@ -54,18 +46,19 @@
       </HBox>
    </top>
    <center>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="407.0" prefWidth="501.0" BorderPane.alignment="CENTER">
          <children>
-            <ScrollPane prefHeight="367.0" prefWidth="643.0" stylesheets="@../application/css/application.css">
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="759.0" prefWidth="1119.0" stylesheets="@../application/css/application.css">
                <content>
-                  <TableView id="adminTable" fx:id="tableViewAdmin" prefHeight="510.0" prefWidth="1116.0">
+                  <TableView id="adminTable" fx:id="tableViewAdmin" prefHeight="766.0" prefWidth="1117.0" tableMenuButtonVisible="true">
                     <columns>
-                      <TableColumn id="AdminIdEmp" editable="false" prefWidth="129.0" text="Sucursal" />
-                        <TableColumn id="AdminRolEmp" prefWidth="205.0" text="Fecha" />
-                      <TableColumn id="AdminEmpName" prefWidth="184.0" text="Empleado" />
-                        <TableColumn minWidth="0.0" prefWidth="153.0" text="SubTotal" />
-                        <TableColumn id="AdminEmpDom" prefWidth="204.0" text="Iva" />
-                        <TableColumn id="AdminEmpEmail" prefWidth="219.0" text="Total" />
+                      <TableColumn id="tableColumnAdminVentasID" prefWidth="96.0" text="ID" />
+                        <TableColumn id="tableColumnAdminVentasRol" prefWidth="134.0" text="Rol" />
+                      <TableColumn id="tableColumnAdminVentasEmpleado" prefWidth="160.0" text="Empleado" />
+                        <TableColumn id="tableColumnAdminVentasTelefono" prefWidth="144.0" text="Telefono" />
+                        <TableColumn id="tableColumnAdminVentasDomicilio" prefWidth="155.0" text="Domicilio" />
+                        <TableColumn id="tableColumnAdminVentasEmail" prefWidth="152.0" text="E-mail" />
+                        <TableColumn id="tableColumnAdminVentasCuentaBancaria" prefWidth="214.0" text="Cuenta bancaria" />
                     </columns>
                   </TableView>
                </content>
@@ -74,21 +67,24 @@
       </VBox>
    </center>
    <left>
-      <VBox prefHeight="396.0" prefWidth="161.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="300.0" prefWidth="161.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="TOP_CENTER" contentDisplay="CENTER" styleClass="button2" stylesheets="@../application/css/application2.css" text="Administrador" />
-            <ImageView fx:id="imageViewAdmin" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <Label id="labelAdminVentasAdministrator" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="165.0" styleClass="button2" stylesheets="@../application/css/application2.css" text="Administrador" textAlignment="CENTER" />
+            <ImageView id="imageViewAdminVentasPerfil" fx:id="imageViewAdmin" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../application/img/userData.png" />
                </image>
             </ImageView>
-            <Button id="AdminExitBtn" fx:id="btnAdminExit" alignment="TOP_CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" text="Salir" textAlignment="CENTER">
+            <Button id="buttonAdminVentas" fx:id="btnAdminExit" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="130.0" text="Salir" textAlignment="CENTER">
                <padding>
                   <Insets left="50.0" right="50.0" />
                </padding>
                <VBox.margin>
                   <Insets left="15.0" />
                </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Button>
          </children>
       </VBox>
