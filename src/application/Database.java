@@ -121,11 +121,11 @@ public class Database extends Thread{
     		}
     		return productos;
     	}
-    public void insertData(String name, int age) throws SQLException 
+    public void insertData(String email,String pass,String rfc,String nombre,String rol) throws SQLException 
     {
-        if(name!=null && age!=0)
+        if(!email.equals("")&&!pass.equals("")&&!rfc.equals("")&&!nombre.equals("")&&!rol.equals(""))
         {
-            String query = "insert into user values(\""+name+"\","+age+")";
+            String query = "insert into user values(select Max(ID_User)+1 from tacos.user\""+email+"\",\""+pass+"\",\""+rol+"\",\""+rfc+"\",\""+nombre+"\")";
             int a = stObj.executeUpdate(query);
 
             if(a == 1)

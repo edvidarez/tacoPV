@@ -2,6 +2,10 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
+<<<<<<< Updated upstream
 	<classpathentry kind="lib" path="C:/Users/Pasos/Desktop/mysql-connector-java-5.1.44-bin.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/Users/Carlos Rivera/Desktop/Nueva carpeta (2)/mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar"/>
+>>>>>>> Stashed changes
 	<classpathentry kind="output" path="bin"/>
 </classpath>
