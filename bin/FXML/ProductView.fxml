@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.ProductViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.ProductViewController">
    <children>
-      <Pane fx:id="ProductView" prefHeight="406.0" prefWidth="592.0" styleClass="background" stylesheets="@../application/css/application.css">
+      <Pane prefHeight="406.0" prefWidth="592.0" fx:id="ProductView">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" styleClass="label2" stylesheets="@../application/css/application2.css" text="Productos">
+            <Label layoutX="14.0" layoutY="14.0" text="Productos">
                <font>
                   <Font size="18.0" />
                </font>
@@ -22,8 +21,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-
-            <Button fx:id="btnCancelProductAgregation" layoutX="442.0" layoutY="355.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="136.0" styleClass="button2" stylesheets="@../application/css/application2.css" text="Cancelar" />
+            <Button fx:id="btnCancelProductAgregation" layoutX="477.0" layoutY="355.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="101.0" text="Cancelar" />
             <FlowPane fx:id="flowPaneProductsDisplay" layoutX="14.0" layoutY="70.0" prefHeight="276.0" prefWidth="561.0">
                <children>
                </children>

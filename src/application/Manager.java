@@ -38,7 +38,9 @@ public class Manager {
 		   return true;
 	   }
 	   public Boolean pagarMesa(int numero){
+
 		   for(Mesa me : Mesas) {
+
 			   if(me.numero == numero)
 			   {
 				   System.out.println("El total a pagar es: "+me.getCuenta());
@@ -46,13 +48,12 @@ public class Manager {
 				   try {
 					Database d = new Database();
 					d.pagarMesa(me);
+					return true;
 				} catch (SQLException | ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
-				   
-			   }
-			   return true;
+				}   
+			   } 
 		   }
 		   return false;
 	   }

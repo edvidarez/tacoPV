@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import application.Main;
 import application.Manager;
-import application.Mesa;
 import application.Producto;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,9 +31,11 @@ public class TableDetailController implements javafx.fxml.Initializable {
 	Button btnPayTableBill;
 	
 	@FXML
+
 	Text totalSumado;
 	
 	@FXML
+
 	private void btnAddProductTableDetail() {
 		try {
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -49,6 +50,7 @@ public class TableDetailController implements javafx.fxml.Initializable {
 			e.printStackTrace();
 		}
 	}
+
 	@FXML
 	private void btnPayTableBill() {
 		Manager m = Manager.getInstance();
@@ -56,6 +58,7 @@ public class TableDetailController implements javafx.fxml.Initializable {
 		Stage stage2 = (Stage) btnPayTableBill.getScene().getWindow();
  	   	stage2.close();
 	}
+
 	public void reloadData() {
 		Manager m = Manager.getInstance();
 		

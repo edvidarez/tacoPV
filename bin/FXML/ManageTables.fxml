@@ -8,26 +8,21 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.ManageTablesController">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.ManageTablesController">
    <children>
-      <Pane prefHeight="470.0" prefWidth="592.0" styleClass="background" stylesheets="@../application/css/application.css">
-
+      <Pane prefHeight="470.0" prefWidth="592.0">
          <children>
             <Label layoutX="14.0" layoutY="25.0" text="Administrar mesas">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-
-            <Button fx:id="btnAddTable" layoutX="14.0" layoutY="416.0" mnemonicParsing="false" onAction="#btnAddTable" prefHeight="40.0" prefWidth="127.0" text="Agregar cuenta">
-
+            <Button fx:id="btnAddTable" layoutX="14.0" layoutY="416.0" onAction="#btnAddTable" mnemonicParsing="false" prefHeight="40.0" prefWidth="127.0" text="Agregar cuenta">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnCloseTableManagement" layoutX="469.0" layoutY="416.0" mnemonicParsing="false" onAction="#btnClose" prefHeight="40.0" prefWidth="109.0" text="Salir">
-
+            <Button fx:id="btnCloseTableManagement" layoutX="469.0" layoutY="416.0" onAction="#btnClose" mnemonicParsing="false" prefHeight="40.0" prefWidth="109.0" text="Salir">
                <font>
                   <Font size="14.0" />
                </font>

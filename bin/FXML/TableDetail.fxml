@@ -8,10 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.text.Text?>
-
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.TableDetailController">
-
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.TableDetailController">
    <children>
       <Pane layoutX="2.0" layoutY="2.0" prefHeight="448.0" prefWidth="613.0">
          <children>
@@ -20,8 +17,6 @@
                   <Font size="18.0" />
                </font>
             </Label>
-
- 
             <Button fx:id="btnAddProductTableDetail" layoutX="14.0" layoutY="388.0" onAction="#btnAddProductTableDetail" mnemonicParsing="false" prefHeight="39.0" prefWidth="127.0" text="Agregar Producto" />
             <Button fx:id="btnPayTableBill" layoutX="481.0" layoutY="388.0" onAction="#btnPayTableBill" mnemonicParsing="false" prefHeight="39.0" prefWidth="119.0" text="Pagar cuenta" />
             <Label layoutX="14.0" layoutY="47.0" text="Productos" textFill="#808080">
@@ -34,8 +29,6 @@
                   <ListView fx:id="listViewProductsInTable" prefHeight="308.0" prefWidth="583.0" />
                </content>
             </ScrollPane>
-            <Text fx:id="totalSumado" layoutX="224.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="147.05859325826168" />
-
          </children>
       </Pane>
    </children>

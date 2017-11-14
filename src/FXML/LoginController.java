@@ -1,5 +1,15 @@
 package FXML;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 
 import application.Database;
@@ -31,6 +41,7 @@ public class LoginController implements Initializable {
 	@FXML
 	Button loginBtn;
 	@FXML
+
 	Label incorrecto;
 	@FXML
 	ComboBox<String> comboType;
@@ -63,6 +74,22 @@ public class LoginController implements Initializable {
 			}
 			else
 			if(s.getRole_() ==3){ //empleado
+
+				String hostName = "localhost";
+				int port = 10001;
+				
+				try (Socket socket = new Socket(hostName, port)) {
+					OutputStream os = socket.getOutputStream(); 
+					PrintWriter out = new PrintWriter(os, true);
+					String msgToServer = "Hola Mundo!";
+					out.println(msgToServer);
+					
+				} catch (UnknownHostException e) {
+					throw new IllegalArgumentException("Invalid hostname: " + hostName, e);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
 				FXMLLoader fxmlLoader = new FXMLLoader();
 	            fxmlLoader.setLocation(Main.class.getResource("../FXML/ManageTables.fxml"));
 	            
@@ -76,6 +103,28 @@ public class LoginController implements Initializable {
 	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
 	    	    stage2.close();
 			}
+			else
+			if(s.getRole_() == 2){ // gerente
+				int port = 10001;
+				try (ServerSocket serverSocket = new ServerSocket(port)) {
+					// Esperar llamada del cliente
+					Socket clientSocket = serverSocket.accept();
+					
+					// Obtener información del cliente que se comunicó
+					InetAddress clientAddress = clientSocket.getInetAddress();  
+					String clientName = clientAddress.getHostName();
+					System.out.println("Client " + clientName + " with IP " + clientAddress.getHostAddress() + " just connected!");
+					
+					// Leer el mensaje del cliente
+					InputStream is = clientSocket.getInputStream();
+					BufferedReader in = new BufferedReader(new InputStreamReader(is));
+					String msgFromClient = in.readLine();
+					System.out.println("Client said: \"" + msgFromClient + "\"");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
             
 	       // System.out.println();
 		

@@ -10,14 +10,31 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class Database {
+
+public class Database extends Thread{
     	Connection conObj;
     	Statement stObj;
     	PreparedStatement ps = null;
-    	public Database() throws SQLException , ClassNotFoundException {
+    	private  void Setup() throws ClassNotFoundException, SQLException {
+
     		Class.forName("com.mysql.jdbc.Driver"); /*Loading Driver class for JDBC*/
     		conObj = DriverManager.getConnection("jdbc:mysql://138.197.202.114:3306/tacos","edvidarez","123123123");
     		stObj = conObj.createStatement();
+    	}
+
+    	public void run(){
+    		try {
+				Setup();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	public Database() throws SQLException , ClassNotFoundException {
+    		run();
     	}
     	public int validateUser(String user, String pass,String role) throws Exception {
     		int role_ = -1;
@@ -32,6 +49,7 @@ public class Database {
     		}
     		System.out.println(role_);
     		String query = "select * from user where username = ? and pass = ? and role = ?"; // agregar username en vez de email
+
     		ps = (PreparedStatement) conObj.prepareStatement(query);
     		ps.setString(1,user);
     		ps.setString(2,pass);
