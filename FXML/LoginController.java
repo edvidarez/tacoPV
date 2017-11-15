@@ -99,24 +99,19 @@ public class LoginController implements Initializable {
 			}
 			else
 			if(s.getRole_() == 2){ // gerente
-				int port = 10001;
-				try (ServerSocket serverSocket = new ServerSocket(port)) {
-					// Esperar llamada del cliente
-					Socket clientSocket = serverSocket.accept();
-					
-					// Obtener información del cliente que se comunicó
-					InetAddress clientAddress = clientSocket.getInetAddress();  
-					String clientName = clientAddress.getHostName();
-					System.out.println("Client " + clientName + " with IP " + clientAddress.getHostAddress() + " just connected!");
-					
-					// Leer el mensaje del cliente
-					InputStream is = clientSocket.getInputStream();
-					BufferedReader in = new BufferedReader(new InputStreamReader(is));
-					String msgFromClient = in.readLine();
-					System.out.println("Client said: \"" + msgFromClient + "\"");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				
+				FXMLLoader fxmlLoader = new FXMLLoader();
+	            fxmlLoader.setLocation(Main.class.getResource("../FXML/GerenciaMenu.fxml"));
+	            
+	            AnchorPane root1 = (AnchorPane) fxmlLoader.load();
+	            Stage stage = new Stage();
+	            //stage.initModality(Modality.WINDOW_MODAL);
+	            //stage.initStyle(StageStyle.DECORATED);
+	            stage.setTitle("Manager");
+	            stage.setScene(new Scene(root1));  
+	            stage.show();
+	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
+	    	    stage2.close();
 			}
             
 	       // System.out.println();
