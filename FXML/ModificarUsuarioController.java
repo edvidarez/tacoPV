@@ -46,7 +46,7 @@ public class ModificarUsuarioController implements Initializable{
 	TextField textFieldMUUsername;
 	
 	@FXML
-	TextField textFieldContraseña;
+	TextField textFieldContrasena;
 	
 	@FXML
 	TextField textFieldMURol;
@@ -104,7 +104,7 @@ public class ModificarUsuarioController implements Initializable{
 		textFieldMUEmail.setText(user.getEmail());
 		textFieldMURFC.setText(user.getRfc());
 		textFieldMUUsername.setText(user.getUsername());
-		textFieldContraseña.setText(user.getPass());
+		textFieldContrasena.setText(user.getPass());
 		textFieldMURol.setText(String.valueOf(user.getRole()));
 	}
 
@@ -128,7 +128,7 @@ public class ModificarUsuarioController implements Initializable{
 			textFieldMUEmail.setDisable(true);
 			textFieldMURFC.setDisable(true);
 			textFieldMUUsername.setDisable(true);
-			textFieldContraseña.setDisable(true);
+			textFieldContrasena.setDisable(true);
 			textFieldMURol.setDisable(true);
 			botonAceptar.setDisable(true);
 			botonEliminar.setDisable(true);
@@ -136,7 +136,7 @@ public class ModificarUsuarioController implements Initializable{
 			textFieldMUEmail.setDisable(false);
 			textFieldMURFC.setDisable(false);
 			textFieldMUUsername.setDisable(false);
-			textFieldContraseña.setDisable(false);
+			textFieldContrasena.setDisable(false);
 			textFieldMURol.setDisable(false);
 			botonAceptar.setDisable(false);
 			botonEliminar.setDisable(false);
@@ -144,7 +144,7 @@ public class ModificarUsuarioController implements Initializable{
 	}
 	
 	public void close() throws ClassNotFoundException, SQLException, IOException {
-		Stage stage = (Stage) textFieldContraseña.getScene().getWindow();
+		Stage stage = (Stage) textFieldContrasena.getScene().getWindow();
 		stage.close();
 		returnToParent();
 	}
@@ -179,13 +179,13 @@ public class ModificarUsuarioController implements Initializable{
         stage.setScene(new Scene(root1)); 
         stage.setResizable(false);
         stage.show();
-        Stage stage2 = (Stage) textFieldContraseña.getScene().getWindow();
+        Stage stage2 = (Stage) textFieldContrasena.getScene().getWindow();
 	    stage2.close();
 	}
 	
 	public void fetchUserInputs() {
 		email = textFieldMUEmail.getText();
-		pass = textFieldContraseña.getText();
+		pass = textFieldContrasena.getText();
 		role = Integer.parseInt(textFieldMURol.getText());
 		rfc = textFieldMURFC.getText();
 		username = textFieldMUUsername.getText();

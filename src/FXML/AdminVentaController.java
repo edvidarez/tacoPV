@@ -26,7 +26,7 @@ public class AdminVentaController implements javafx.fxml.Initializable{
 	//TableView tableViewadminVentasTabla;
 	
 	@FXML
-	MenuItem menuItemAdminVentasEspañol;
+	MenuItem menuItemAdminVentasEspanol;
 	
 	@FXML
 	MenuItem menuItemAdminVentasIngles;

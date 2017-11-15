@@ -65,7 +65,7 @@
       </Button>
       <ComboBox fx:id="comboBoxEditarUsuario" layoutX="32.0" layoutY="81.0" prefHeight="37.0" prefWidth="560.0" />
       <TextField id="textFieldMUEmail" fx:id="textFieldMUEmail" layoutX="178.0" layoutY="132.0" prefHeight="37.0" prefWidth="414.0" />
-      <TextField fx:id="textFieldContraseña" layoutX="178.0" layoutY="179.0" prefHeight="37.0" prefWidth="414.0" />
+      <TextField fx:id="textFieldContrasena" layoutX="178.0" layoutY="179.0" prefHeight="37.0" prefWidth="414.0" />
       <TextField fx:id="textFieldMURFC" layoutX="178.0" layoutY="225.0" prefHeight="37.0" prefWidth="414.0" />
       <TextField fx:id="textFieldMUUsername" layoutX="178.0" layoutY="272.0" prefHeight="37.0" prefWidth="414.0" />
       <TextField fx:id="textFieldMURol" layoutX="178.0" layoutY="320.0" prefHeight="37.0" prefWidth="414.0" />
