@@ -50,7 +50,7 @@
          <children>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="759.0" prefWidth="1119.0" stylesheets="@../application/css/application.css">
                <content>
-                  <TableView id="adminTable" fx:id="tableViewAdmin" prefHeight="768.0" prefWidth="1117.0" tableMenuButtonVisible="true">
+                  <TableView id="tableViewadminVentasTabla" fx:id="tableViewAdmin" prefHeight="768.0" prefWidth="1117.0" tableMenuButtonVisible="true">
                     <columns>
                       <TableColumn id="tableColumnAdminVentasID" prefWidth="96.0" text="ID" />
                         <TableColumn id="tableColumnAdminVentasRol" prefWidth="134.0" text="Rol" />

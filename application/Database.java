@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
 public class Database extends Thread{
     	Connection conObj;
     	Statement stObj;
@@ -171,4 +173,20 @@ public class Database extends Thread{
                 System.out.println("deletion Failed");
         }
     }
+	public User getUser(String id) throws SQLException {
+		// TODO Auto-generated method stub
+		String query = "SELECT * from user where ID_User = " + id;
+		User user = new User();
+		ResultSet rs = stObj.executeQuery(query);
+		while(rs.next())
+		{
+			user.setId(rs.getInt("ID_User")); 
+			user.setEmail(rs.getString("email")); 
+			user.setPass(rs.getString("pass"));
+			user.setRole(rs.getInt("role"));
+			user.setRfc(rs.getString("RFC"));
+			user.setUsername(rs.getString("username"));
+		}
+		return user;
+	}
 }
