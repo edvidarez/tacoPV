@@ -189,4 +189,10 @@ public class Database extends Thread{
 		}
 		return user;
 	}
+	
+	public User getUsers(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
