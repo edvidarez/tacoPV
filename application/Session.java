@@ -1,11 +1,14 @@
 package application;
 
+import java.util.Locale;
+
 public class Session {
 
 	   private static Session session = new Session( );
 	   private static String user;
 	   private static int Id;
-	
+	   public static Locale locale;
+	   public static String resourcesLocation;
 	   
 	public static String getUser() {
 		return user;

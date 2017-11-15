@@ -1,4 +1,4 @@
-package FXML;
+package src.FXML;
 
 import java.net.URL;
 import java.util.ResourceBundle;
