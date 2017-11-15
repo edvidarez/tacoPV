@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../application/css/application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../src/application/css/application.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
       <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" stylesheets="@../application/css/application.css" BorderPane.alignment="CENTER">
          <children>
@@ -20,7 +19,7 @@
       </HBox>
    </bottom>
    <top>
-      <Label styleClass="label-header" stylesheets="@../application/css/application.css" text="Perfil" BorderPane.alignment="CENTER" />
+      <Label styleClass="label-header" stylesheets="@../src/application/css/application2.css" text="Perfil" BorderPane.alignment="CENTER" />
    </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@../application/css/application.css" BorderPane.alignment="CENTER">
@@ -35,7 +34,7 @@
             <Label id="adminEmEdit" layoutX="156.0" layoutY="208.0" text="E-Mail" />
             <ImageView fitHeight="190.0" fitWidth="159.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../application/img/perfil.png" />
+                  <Image url="@../src/application/img/perfil.png" />
                </image>
             </ImageView>
             <Label layoutX="202.0" layoutY="30.0" text="Verifique sus datos antes de guardar" />
