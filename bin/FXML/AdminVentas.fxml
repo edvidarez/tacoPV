@@ -52,13 +52,11 @@
                <content>
                   <TableView id="tableViewadminVentasTabla" fx:id="tableViewAdmin" prefHeight="768.0" prefWidth="1117.0" tableMenuButtonVisible="true">
                     <columns>
-                      <TableColumn id="tableColumnAdminVentasID" prefWidth="96.0" text="ID" />
-                        <TableColumn id="tableColumnAdminVentasRol" prefWidth="134.0" text="Rol" />
-                      <TableColumn id="tableColumnAdminVentasEmpleado" prefWidth="160.0" text="Empleado" />
-                        <TableColumn id="tableColumnAdminVentasTelefono" prefWidth="144.0" text="Telefono" />
-                        <TableColumn id="tableColumnAdminVentasDomicilio" prefWidth="155.0" text="Domicilio" />
-                        <TableColumn id="tableColumnAdminVentasEmail" prefWidth="152.0" text="E-mail" />
-                        <TableColumn id="tableColumnAdminVentasCuentaBancaria" prefWidth="214.0" text="Cuenta bancaria" />
+                      <TableColumn id="tableColumnAdminVentasID" fx:id="tableColumnIDAdminVentas" prefWidth="181.0" text="ID" />
+                        <TableColumn id="tableColumnAdminVentasRol" fx:id="tableColumnEmailAdminVentas" prefWidth="171.0" text="email" />
+                      <TableColumn id="tableColumnAdminVentasEmpleado" fx:id="tableColumnRoleAdminVentas" prefWidth="171.0" text="role" />
+                        <TableColumn id="tableColumnAdminVentasTelefono" fx:id="tableColumnRFCAdminVentas" prefWidth="248.0" text="RFC" />
+                        <TableColumn id="tableColumnAdminVentasDomicilio" fx:id="tableColumnUsernameAdminVentas" prefWidth="254.0" text="username" />
                     </columns>
                   </TableView>
                </content>
@@ -75,7 +73,7 @@
                   <Image url="@../src/application/img/userData.png" />
                </image>
             </ImageView>
-            <Button id="buttonAdminVentas" fx:id="btnAdminExit" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="130.0" text="Salir" textAlignment="CENTER">
+            <Button id="buttonAdminVentas" fx:id="btnAdminExit" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#close" prefHeight="28.0" prefWidth="130.0" text="Salir" textAlignment="CENTER">
                <padding>
                   <Insets left="50.0" right="50.0" />
                </padding>

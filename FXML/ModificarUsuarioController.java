@@ -1,19 +1,24 @@
 package FXML;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.Database;
+import application.Main;
 import application.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -25,6 +30,8 @@ public class ModificarUsuarioController implements Initializable{
 	private int role;
 	private String rfc;
 	private String username;
+	
+	Stage stage;
 	
 	@FXML
 	ComboBox<User> comboBoxEditarUsuario;
@@ -118,11 +125,6 @@ public class ModificarUsuarioController implements Initializable{
 	
 	public void disableElements(boolean init) {
 		if(init) {
-			textFieldMUEmail.setText("");
-			textFieldMURFC.setText("");
-			textFieldMUUsername.setText("");
-			textFieldContraseña.setText("");
-			textFieldMURol.setText("");
 			textFieldMUEmail.setDisable(true);
 			textFieldMURFC.setDisable(true);
 			textFieldMUUsername.setDisable(true);
@@ -141,26 +143,44 @@ public class ModificarUsuarioController implements Initializable{
 		}
 	}
 	
-	public void close() {
+	public void close() throws ClassNotFoundException, SQLException, IOException {
 		Stage stage = (Stage) textFieldContraseña.getScene().getWindow();
 		stage.close();
+		returnToParent();
 	}
 	
-	public void modifyUser() throws SQLException, ClassNotFoundException {
+	public void modifyUser() throws SQLException, ClassNotFoundException, IOException {
 		fetchUserInputs();
 		if(!email.equals("") && !pass.equals("") && !rfc.equals("") && !username.equals("")){
 			Database db = new Database();
 			db.updateUser(id, email, pass, role, rfc, username);
-			populateUsers();
 		}
+		returnToParent();
 	}
 	
 	
-	public void deleteUser() throws SQLException, ClassNotFoundException {
+	public void deleteUser() throws SQLException, ClassNotFoundException, IOException {
 		fetchUserInputs();
 		Database db = new Database();
 		db.deleteUser(id);
 		this.close();
+		returnToParent();
+	}
+	
+	public void returnToParent() throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(Main.class.getResource("../FXML/AdminVentas.fxml"));
+        
+        BorderPane root1 = (BorderPane) fxmlLoader.load();
+        Stage stage = new Stage();
+        //stage.initModality(Modality.WINDOW_MODAL);
+        //stage.initStyle(StageStyle.DECORATED);
+        stage.setTitle("Admin");
+        stage.setScene(new Scene(root1)); 
+        stage.setResizable(false);
+        stage.show();
+        Stage stage2 = (Stage) textFieldContraseña.getScene().getWindow();
+	    stage2.close();
 	}
 	
 	public void fetchUserInputs() {
