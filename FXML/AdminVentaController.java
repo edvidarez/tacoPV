@@ -29,7 +29,8 @@ public class AdminVentaController implements javafx.fxml.Initializable{
 	MenuItem addUser;
 	@FXML
 	Label labelEmailMenu;
-	
+	@FXML
+	MenuItem menuItemModifyUser;
 	
 	@Override	
 	public void initialize(URL location, ResourceBundle resources) {
@@ -46,6 +47,23 @@ public class AdminVentaController implements javafx.fxml.Initializable{
             stage.setScene(new Scene(root1));  
             stage.show();   
             //loader.setLocation(Main.class.getResource("../FXML/AltaUsuario.fxml"));
+            
+		}catch(Exception e) {
+			System.out.println(e.toString());
+			e.printStackTrace();
+			
+		}
+	}
+	
+	public void openModifyItem(){
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(Main.class.getResource("../FXML/EditarUsuario.fxml"));
+            AnchorPane root1 = (AnchorPane) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Modificar usuarios");
+            stage.setScene(new Scene(root1));  
+            stage.show();   
             
 		}catch(Exception e) {
 			System.out.println(e.toString());
