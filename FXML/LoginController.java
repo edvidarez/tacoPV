@@ -10,6 +10,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import application.Database;
@@ -26,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -47,6 +49,31 @@ public class LoginController implements Initializable {
 	Hyperlink loginForgPass;
 	@FXML
 	Label loginLabel;
+	@FXML
+	MenuItem espTxt;
+	@FXML
+	MenuItem engTxt;
+	
+	@FXML
+	public void engText(){
+		String resourcesLocation = "i18n.mensaje_en";
+		Locale locale = new Locale("EN");
+		Session.resourcesLocation = resourcesLocation;
+		Session.locale = locale;
+		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+		loginLabel.setText(rb.getString("lbl.login"));
+	}
+	@FXML
+	public void espText(){
+		String resourcesLocation = "i18n.mensajes";
+		
+		Locale locale = new Locale("ES");
+		Session.resourcesLocation = resourcesLocation;
+		Session.locale = locale;
+		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+		loginLabel.setText(rb.getString("lbl.login"));
+		
+	}
 
 	@FXML
 	private void login_Btn(){

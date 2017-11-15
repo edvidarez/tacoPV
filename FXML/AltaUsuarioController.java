@@ -1,14 +1,18 @@
 package FXML;
 
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import application.Database;
+import application.Session;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class AltaUsuarioController{
+public class AltaUsuarioController implements Initializable{
 @FXML
 Label labelAltausuarioTitulo;
 @FXML
@@ -63,6 +67,14 @@ public void cancelar() {
 	textboxRfc.setText("");
 	textboxNombreusuario.setText("");
 	textboxRol.setText("");
+	
+}
+
+@Override
+public void initialize(URL location, ResourceBundle resources) {
+	// TODO Auto-generated method stub
+	ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+	labelAltausuarioTitulo.setText(rb.getString("lbl.titulo"));
 	
 }
 
