@@ -107,10 +107,14 @@ public class Database extends Thread{
     			ps = (PreparedStatement) conObj.prepareStatement(query);
         		ps.setInt(1,id_venta);
         		ps.setInt(2,p.idProducto);
-        		ps.setInt(3, 1);
+        		ps.setInt(3, p.cantidad);
         		ps.setFloat(4, p.precio);
-        		System.out.println(ps);
-        		ps.executeUpdate();
+        		
+        		if(p.cantidad!=0)
+        		{
+        			ps.executeUpdate();
+        			System.out.println(ps);
+        		}
     			i++;
     		}
     	}
@@ -120,7 +124,7 @@ public class Database extends Thread{
     		ArrayList<Producto> productos = new ArrayList<Producto>();
     		while(rs.next())
     		{
-    			Producto p = new Producto(rs.getString("descripcion"), rs.getFloat("precio"), rs.getInt("ID_Producto"));
+    			Producto p = new Producto(rs.getString("descripcion"), rs.getFloat("precio"), rs.getInt("ID_Producto"), rs.getString("imagen"));
     			productos.add(p);
     		}
     		return productos;

@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
 
 import application.Database;
 import application.Main;
+import application.Manager;
 import application.Session;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -70,23 +71,12 @@ public class LoginController implements Initializable {
 			}
 			else
 			if(s.getRole_() ==3){ //empleado
-				String hostName = "localhost";
-				int port = 10001;
+			
 				
-				try (Socket socket = new Socket(hostName, port)) {
-					OutputStream os = socket.getOutputStream(); 
-					PrintWriter out = new PrintWriter(os, true);
-					String msgToServer = "Hola Mundo!";
-					out.println(msgToServer);
-					
-				} catch (UnknownHostException e) {
-					throw new IllegalArgumentException("Invalid hostname: " + hostName, e);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				FXMLLoader fxmlLoader = new FXMLLoader();
-	            fxmlLoader.setLocation(Main.class.getResource("../FXML/ManageTables.fxml"));
-	            
+	            s.startClient();
+	            s.cliente.getMesas();
+	            FXMLLoader fxmlLoader = new FXMLLoader();
+	            fxmlLoader.setLocation(Main.class.getResource("../FXML/ManageTableEmployee.fxml"));
 	            AnchorPane root1 = (AnchorPane) fxmlLoader.load();
 	            Stage stage = new Stage();
 	            //stage.initModality(Modality.WINDOW_MODAL);
@@ -98,28 +88,38 @@ public class LoginController implements Initializable {
 	    	    stage2.close();
 			}
 			else
-			if(s.getRole_() == 2){ // gerente
-				int port = 10001;
-				try (ServerSocket serverSocket = new ServerSocket(port)) {
-					// Esperar llamada del cliente
-					Socket clientSocket = serverSocket.accept();
-					
-					// Obtener información del cliente que se comunicó
-					InetAddress clientAddress = clientSocket.getInetAddress();  
-					String clientName = clientAddress.getHostName();
-					System.out.println("Client " + clientName + " with IP " + clientAddress.getHostAddress() + " just connected!");
-					
-					// Leer el mensaje del cliente
-					InputStream is = clientSocket.getInputStream();
-					BufferedReader in = new BufferedReader(new InputStreamReader(is));
-					String msgFromClient = in.readLine();
-					System.out.println("Client said: \"" + msgFromClient + "\"");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+			if(s.getRole_() == 2){ 
+				System.out.println("Gerente");
+				Manager m = Manager.getInstance();
+				m.startServer();
+				Thread t = new Thread() {
+					public void run(){
+						m.server.startServer();
+					}
+				};
+				t.start();
+				Thread t2 = new Thread() {
+					public void run(){
+						m.server.listenForChanges();
+					}
+				};
+				t2.start();
+				FXMLLoader fxmlLoader = new FXMLLoader();
+	            fxmlLoader.setLocation(Main.class.getResource("../FXML/ManageTables.fxml"));
+	            
+	            AnchorPane root1 = (AnchorPane) fxmlLoader.load();
+	            Stage stage = new Stage();
+	            //stage.initModality(Modality.WINDOW_MODAL);
+	            //stage.initStyle(StageStyle.DECORATED);
+	            stage.setTitle("Productos");
+	            stage.setScene(new Scene(root1));  
+	            stage.show();
+	           // s.startClient();
+	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
+	    	    stage2.close();
 			}
             
-	       // System.out.println();
+	       
 		
 
 		} catch (Exception e) {

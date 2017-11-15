@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -7,11 +9,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 
-public class Manager {
+public class Manager implements Serializable {
 
-	   private static Manager manager = new Manager( );
+	   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static Manager manager = new Manager( );
+		public static void setManager(Manager m )
+		{
+			manager = m;
+		}
 	   public ObservableList<Button> olb = FXCollections.observableArrayList ();
-	   
+	   public Servidor server;
 
 	   public int nMesas = 1;
 	   
@@ -20,6 +33,15 @@ public class Manager {
 	   /* A private Constructor prevents any other
 	    * class from instantiating.
 	    */
+	   public void startServer()
+	   {
+		   try {
+				server = new Servidor("Servidor");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	   }
 	   private Manager() {
 		   
 	   }

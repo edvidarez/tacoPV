@@ -5,17 +5,19 @@ import java.util.ResourceBundle;
 
 import application.Main;
 import application.Manager;
-import application.Mesa;
+import application.Session;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class ManageTablesController implements Initializable {
@@ -37,6 +39,7 @@ public class ManageTablesController implements Initializable {
 	private void btnAddTable(){
 		Manager m = Manager.getInstance();
 		Button b = new Button("Mesa"+m.nMesas);
+		b.setPrefHeight(50);
 		b.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -48,7 +51,7 @@ public class ManageTablesController implements Initializable {
                     fxmlLoader.setLocation(Main.class.getResource("../FXML/TableDetail.fxml"));
                     AnchorPane root1 = (AnchorPane) fxmlLoader.load();
                     Stage stage = new Stage();
-                    stage.setTitle("Login");
+                    stage.setTitle("Productos");
                     stage.setScene(new Scene(root1));  
                     stage.show();
         		} catch (Exception e) {
@@ -65,6 +68,7 @@ public class ManageTablesController implements Initializable {
 			
 			m.nMesas++;
 		}
+		m.server.setManager(m);
 		
 	}
 	@FXML
@@ -88,6 +92,10 @@ public class ManageTablesController implements Initializable {
 	@Override	
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("inicializado todo");
+		if(Session.getRole_()==3) {
+			System.out.println("Empleadooooooooo0o0o0o0o0o");
+			
+		}
 		
 	}
 	
