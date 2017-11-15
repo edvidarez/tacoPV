@@ -52,7 +52,7 @@
             </HBox>
             <VBox alignment="BOTTOM_LEFT" layoutX="11.0" layoutY="473.0" prefHeight="48.0" prefWidth="70.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="324.0">
                <children>
-                  <Label text="Region" />
+                  <Label fx:id="labelRegion" text="Region" />
                   <SplitMenuButton mnemonicParsing="false" prefHeight="29.0" prefWidth="48.0" text="SplitMenuButton">
                     <items>
                       <MenuItem fx:id="espTxt" mnemonicParsing="false" onAction="#espText" text="Esp" />

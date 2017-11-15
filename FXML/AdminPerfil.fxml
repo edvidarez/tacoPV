@@ -13,31 +13,31 @@
    <bottom>
       <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0" stylesheets="@../application/css/application.css" BorderPane.alignment="CENTER">
          <children>
-            <Button id="backEditAdmin" mnemonicParsing="false" text="Atras" />
-            <Button mnemonicParsing="false" text="Guardar" />
+            <Button id="backEditAdmin" fx:id="btnAtras" mnemonicParsing="false" text="Atras" />
+            <Button fx:id="lblGuardar" mnemonicParsing="false" text="Guardar" />
          </children>
       </HBox>
    </bottom>
    <top>
-      <Label styleClass="label-header" stylesheets="@../src/application/css/application2.css" text="Perfil" BorderPane.alignment="CENTER" />
+      <Label fx:id="lblperf" styleClass="label-header" stylesheets="@../src/application/css/application2.css" text="Perfil" BorderPane.alignment="CENTER" />
    </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="background" stylesheets="@../application/css/application.css" BorderPane.alignment="CENTER">
          <children>
-            <Label id="adminPassEdit" layoutX="156.0" layoutY="127.0" text="Password" />
-            <Label id="adminNomEdit" layoutX="156.0" layoutY="88.0" text="Nombre" />
+            <Label id="adminPassEdit" fx:id="lblPass1" layoutX="156.0" layoutY="127.0" text="Password" />
+            <Label id="adminNomEdit" fx:id="lblNombre" layoutX="156.0" layoutY="88.0" text="Nombre" />
             <TextField layoutX="233.0" layoutY="83.0" />
             <TextField accessibleRole="PASSWORD_FIELD" layoutX="233.0" layoutY="122.0" />
-            <Label id="adminPass2Edit" layoutX="156.0" layoutY="168.0" text="Password" />
+            <Label id="adminPass2Edit" fx:id="lblPass2" layoutX="156.0" layoutY="168.0" text="Password" />
             <TextField accessibleRole="PASSWORD_FIELD" layoutX="233.0" layoutY="162.0" />
             <TextField id="AdminemailEdit" layoutX="233.0" layoutY="201.0" />
-            <Label id="adminEmEdit" layoutX="156.0" layoutY="208.0" text="E-Mail" />
+            <Label id="adminEmEdit" fx:id="lblemail" layoutX="156.0" layoutY="208.0" text="E-Mail" />
             <ImageView fitHeight="190.0" fitWidth="159.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../src/application/img/perfil.png" />
                </image>
             </ImageView>
-            <Label layoutX="202.0" layoutY="30.0" text="Verifique sus datos antes de guardar" />
+            <Label fx:id="lblverifique" layoutX="202.0" layoutY="30.0" text="Verifique sus datos antes de guardar" />
          </children>
       </AnchorPane>
    </center>
