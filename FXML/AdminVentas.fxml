@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="borderPaneAdminVentasMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="borderPaneAdminVentasMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.AdminVentaController">
    <top>
       <HBox alignment="TOP_CENTER" pickOnBounds="false" prefHeight="26.0" prefWidth="600.0" styleClass="context-menu" stylesheets="@../application/css/application.css" BorderPane.alignment="CENTER">
          <children>
@@ -34,9 +34,9 @@
                         <MenuItem id="menuItemAdminVentasDolares" mnemonicParsing="false" text="Dolares" />
                      </items>
                   </Menu>
-                <Menu id="menuAdminVentasUsuarios" mnemonicParsing="false" text="Usuarios">
+                <Menu id="menuAdminVentasUsuarios" fx:id="menuUsuarios" mnemonicParsing="false" text="Usuarios">
                   <items>
-                    <MenuItem id="menuItemAdminVentasAgregarUsuario" mnemonicParsing="false" text="Agregar usuario" />
+                    <MenuItem id="menuItemAdminVentasAgregarUsuario" fx:id="addUser" mnemonicParsing="false" onAction="#openAddUser" text="Agregar usuario" />
                         <MenuItem id="menuItemAdminVentasModificarUsuario" mnemonicParsing="false" text="Modificar usuario" />
                   </items>
                 </Menu>

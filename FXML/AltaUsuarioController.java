@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class AltaUsuarioController {
+public class AltaUsuarioController{
 @FXML
 Label labelAltausuarioTitulo;
 @FXML
@@ -38,9 +38,21 @@ Button botonCancelar;
 
 @FXML
 public void insert_user() throws ClassNotFoundException, SQLException { // insert to db a tabla users
-	Database db = new Database();
+	String email = textboxEmail.getText().toString();
+	String pass = textboxContrasena.getText().toString();
+	String rfc = textboxRfc.getText().toString();
+	String nombre = textboxNombreusuario.getText().toString();
+	String rol = textboxRol.getText().toString();
+	int r = Integer.parseInt(rol);
+	if(!pass.equals("")&& !nombre.equals("")&& !nombre.equals("Ingrese Nombre de Usuario")&&!pass.equals("Ingrese una password")) {
+		Database db = new Database();
+		db.insertUser(email, pass, rfc, nombre, r);
+	}
+	else {
+		textboxNombreusuario.setText("Ingrese Nombre de Usuario");
+		textboxContrasena.setText("Ingrese una password");
+	}
 	
-	//db.insertData(name, age);
 }
 
 @FXML

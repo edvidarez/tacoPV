@@ -45,7 +45,7 @@ public class Database extends Thread{
     		break;
     		}
     		System.out.println(role_);
-    		String query = "select * from user where email = ? and pass = ? and role = ?";
+    		String query = "select * from user where username = ? and pass = ? and role = ?";
     		ps = (PreparedStatement) conObj.prepareStatement(query);
     		ps.setString(1,user);
     		ps.setString(2,pass);
@@ -72,6 +72,8 @@ public class Database extends Thread{
     			System.out.println("email : "+rs.getString("email"));
     			System.out.println("pass : "+rs.getString("pass"));
     			System.out.println("role : "+rs.getInt("role"));
+    			System.out.println("rfc : "+rs.getInt("RFC"));
+    			System.out.println("username : "+rs.getInt("username"));
     		}
     	}
     	public String getToday() {
@@ -121,25 +123,40 @@ public class Database extends Thread{
     		}
     		return productos;
     	}
-    public void insertData(String email,String pass,String rfc,String nombre,String rol) throws SQLException 
+    public void insertUser(String email,String pass,String rfc,String nombre,int rol) throws SQLException 
     {
-        if(!email.equals("")&&!pass.equals("")&&!rfc.equals("")&&!nombre.equals("")&&!rol.equals(""))
+        if(!email.equals("")&&!pass.equals("")&&!rfc.equals("")&&!nombre.equals(""))
         {
-            String query = "insert into user values(select Max(ID_User)+1 from tacos.user\""+email+"\",\""+pass+"\",\""+rol+"\",\""+rfc+"\",\""+nombre+"\")";
-            int a = stObj.executeUpdate(query);
-
-            if(a == 1)
+        	String query = "insert into user(email,pass,role,RFC,username) values(?,?,?,?,?)";
+        	PreparedStatement q = (PreparedStatement) conObj.prepareStatement(query);  
+        	q.setString(1, email);
+        	q.setString(2, pass);
+        	q.setInt(3, rol);
+        	q.setString(4, rfc);
+        	q.setString(5, nombre);
+        	
+        	System.out.println(q);
+        	Boolean a = q.execute();
+        	//q.executeUpdate();
+        	//String query = "insert into user values(select Max(ID_User)+1 from tacos.user,\""+email+"\",\""+pass+"\",\""+rol+"\",\""+rfc+"\",\""+nombre+"\")";
+            //int a = stObj.executeUpdate(query);
+            if(a)
             {
-                System.out.println("Update Successful");
+                System.out.println("Update Failed"); 
             }
             else
             {
-                System.out.println("Update Failed");
+                System.out.println("Update Successful");
             }
+        }
+        else {
+        	System.out.println("Verificar datos ingresados");
         }
     }
 
-
+    public void ModifyUser() {
+    	//mete tu codigo Ali
+    }
     void deleteData(String name) throws Exception 
     {
         String query = "delete from user where name = \""+name+"\"";
