@@ -145,6 +145,22 @@ public class LoginController implements Initializable {
 	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
 	    	    stage2.close();
 			}
+			else
+			if(s.getRole_() == 2){ // gerente
+				
+				FXMLLoader fxmlLoader = new FXMLLoader();
+	            fxmlLoader.setLocation(Main.class.getResource("../FXML/GerenciaMenu.fxml"));
+	            
+	            AnchorPane root1 = (AnchorPane) fxmlLoader.load();
+	            Stage stage = new Stage();
+	            //stage.initModality(Modality.WINDOW_MODAL);
+	            //stage.initStyle(StageStyle.DECORATED);
+	            stage.setTitle("Manager");
+	            stage.setScene(new Scene(root1));  
+	            stage.show();
+	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
+	    	    stage2.close();
+			}
             
 	       
 		
