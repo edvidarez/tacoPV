@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="borderPaneAdminVentasMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.AdminVentaController">
+<BorderPane id="borderPaneAdminVentasMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.AdminVentaController">
    <top>
       <HBox alignment="TOP_CENTER" pickOnBounds="false" prefHeight="26.0" prefWidth="600.0" styleClass="context-menu" stylesheets="@../application/css/application.css" BorderPane.alignment="CENTER">
          <children>
@@ -37,7 +37,7 @@
                 <Menu id="menuAdminVentasUsuarios" fx:id="menuUsuarios" mnemonicParsing="false" text="Usuarios">
                   <items>
                     <MenuItem id="menuItemAdminVentasAgregarUsuario" fx:id="addUser" mnemonicParsing="false" onAction="#openAddUser" text="Agregar usuario" />
-                        <MenuItem id="menuItemAdminVentasModificarUsuario" mnemonicParsing="false" text="Modificar usuario" />
+                        <MenuItem id="menuItemAdminVentasModificarUsuario" fx:id="menuItemModifyUser" mnemonicParsing="false" onAction="#openModifyItem" text="Modificar usuario" />
                   </items>
                 </Menu>
               </menus>
@@ -52,13 +52,11 @@
                <content>
                   <TableView id="tableViewadminVentasTabla" fx:id="tableViewAdmin" prefHeight="768.0" prefWidth="1117.0" tableMenuButtonVisible="true">
                     <columns>
-                      <TableColumn id="tableColumnAdminVentasID" prefWidth="96.0" text="ID" />
-                        <TableColumn id="tableColumnAdminVentasRol" prefWidth="134.0" text="Rol" />
-                      <TableColumn id="tableColumnAdminVentasEmpleado" prefWidth="160.0" text="Empleado" />
-                        <TableColumn id="tableColumnAdminVentasTelefono" prefWidth="144.0" text="Telefono" />
-                        <TableColumn id="tableColumnAdminVentasDomicilio" prefWidth="155.0" text="Domicilio" />
-                        <TableColumn id="tableColumnAdminVentasEmail" prefWidth="152.0" text="E-mail" />
-                        <TableColumn id="tableColumnAdminVentasCuentaBancaria" prefWidth="214.0" text="Cuenta bancaria" />
+                      <TableColumn id="tableColumnAdminVentasID" fx:id="tableColumnIDAdminVentas" prefWidth="181.0" text="ID" />
+                        <TableColumn id="tableColumnAdminVentasRol" fx:id="tableColumnEmailAdminVentas" prefWidth="171.0" text="email" />
+                      <TableColumn id="tableColumnAdminVentasEmpleado" fx:id="tableColumnRoleAdminVentas" prefWidth="171.0" text="role" />
+                        <TableColumn id="tableColumnAdminVentasTelefono" fx:id="tableColumnRFCAdminVentas" prefWidth="248.0" text="RFC" />
+                        <TableColumn id="tableColumnAdminVentasDomicilio" fx:id="tableColumnUsernameAdminVentas" prefWidth="254.0" text="username" />
                     </columns>
                   </TableView>
                </content>
@@ -75,7 +73,7 @@
                   <Image url="@../src/application/img/userData.png" />
                </image>
             </ImageView>
-            <Button id="buttonAdminVentas" fx:id="btnAdminExit" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="130.0" text="Salir" textAlignment="CENTER">
+            <Button id="buttonAdminVentas" fx:id="btnAdminExit" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#close" prefHeight="28.0" prefWidth="130.0" text="Salir" textAlignment="CENTER">
                <padding>
                   <Insets left="50.0" right="50.0" />
                </padding>

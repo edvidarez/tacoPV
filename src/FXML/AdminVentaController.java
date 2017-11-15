@@ -1,4 +1,4 @@
-package FXML;
+package src.FXML;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 
@@ -23,8 +22,8 @@ public class AdminVentaController implements javafx.fxml.Initializable{
 	@FXML
 	Label labelAdminVentasAdministrador;
 	
-	@FXML
-	TableView tableViewadminVentasTabla;
+	//@FXML
+	//TableView tableViewadminVentasTabla;
 	
 	@FXML
 	MenuItem menuItemAdminVentasEspañol;

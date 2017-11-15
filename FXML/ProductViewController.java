@@ -5,16 +5,21 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.Database;
+import application.Main;
 import application.Manager;
 import application.Producto;
+import application.Session;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class ProductViewController implements Initializable {
@@ -23,57 +28,96 @@ public class ProductViewController implements Initializable {
 	private FlowPane flowPaneProductsDisplay;
 	
 	@FXML
-	private Button btnCancelProductAgregation;
+	private Button botonCancelar;
 	
 	@FXML
-	private void btnCancelProductAgregation() {
-		System.out.println("Cancel");
+	private void cancelar() {
 	}
 	
+	@FXML
+	Button botonAgregar;
+	@FXML 
+	private void  agregar()
+	{
+		System.out.println("agregar");
+		for(Producto p : productos)
+		{
+			System.out.println(p.descripcion+" "+p.cantidad);
+		}
+		Manager m = Manager.getInstance();
+		m.Mesas.get(m.currentMesa.numero-1).productos = productos;
+		if(Session.getInstance().getRole_() == 3)
+		{
+			System.out.println("Actualizando "+m.Mesas.size());
+			//Session.getInstance().startClient();
+			Session.getInstance().cliente.putMesas();
+			
+		}
+			
+		System.out.println("Current mesa = "+m.currentMesa.numero);
+		Stage stage = (Stage) botonCancelar.getScene().getWindow();
+	    stage.close();
+	}
+	ArrayList<Producto> productos;
 	@Override	
 	public void initialize(URL location, ResourceBundle resources) {
 		Database d;
 		try {
+			
 			d = new Database();
-			ArrayList<Producto> productos = d.fetchProductos();
+			if(Manager.getInstance().Mesas.get(Manager.getInstance().currentMesa.numero-1).productos.size() != 0)
+			{
+				System.out.println(Manager.getInstance().Mesas.get(Manager.getInstance().currentMesa.numero-1).productos.size());
+				productos = Manager.getInstance().Mesas.get(Manager.getInstance().currentMesa.numero-1).productos;
+			}
+			else
+			{
+				System.out.println("fetch");
+				productos  = d.fetchProductos();
+			}
             for(Producto p : productos){
 				//System.out.println(p.descripcion);
-				Button b = new Button(p.descripcion);
-				int pid = p.idProducto;
-				b.setOnAction(new EventHandler<ActionEvent>() {
-		            @Override
-		            public void handle(ActionEvent event) {
-		                Manager m = Manager.getInstance();
-		                Producto prod = new Producto(b.getText(), 0,pid);
-		                
-		                for(Producto pr : productos){
-		                	if(pr.descripcion == prod.descripcion)
-		                	{
-		                		prod.precio = pr.precio;
-		                	}
-		                }
-		                m.currentMesa.productos.add(prod);
-		                m.currentMesa.olp.add(prod.descripcion);
-		                System.out.println("added "+prod.descripcion);
-		            }
-		        });
-				b.setWrapText(true);
-				b.setTextAlignment(TextAlignment.CENTER);
-				b.setPrefHeight(74);
-				b.setPrefWidth(120);
+            	try {
+            		
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(Main.class.getResource("../FXML/Product.fxml"));
+                    AnchorPane b = (AnchorPane) fxmlLoader.load();
+                    ProductController pc = fxmlLoader.getController(); 
+                    pc.product = p;
+                    System.out.println(p.cantidad);
+                    Label title = pc.titulo;
+                    Label Cuantity = pc.Cuantity;
+                    
+                    
+            		Cuantity.setText(String.valueOf(p.cantidad));
+
+                    ImageView image = pc.imagen;
+                    
+                    System.out.println(title.getText());
+                    image.setStyle("-fx-image: url(\""+ p.img + "\");");
+                    title.setStyle("-fx-color: red");
+                    title.setText(p.descripcion);
+                    title.setStyle("-fx-color: red");
+                   
+                    
+    				flowPaneProductsDisplay.getChildren().add(b);
+
+        		} catch (Exception e) {
+        			e.printStackTrace();
+        		}
 				
-				flowPaneProductsDisplay.getChildren().add(b);
+				
 			}
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 		
-		btnCancelProductAgregation.setOnMouseClicked(new EventHandler<Event>() {
+		botonCancelar.setOnMouseClicked(new EventHandler<Event>() {
 			@Override
 			public void handle(Event event) {
 				//FlowPane flowPaneProductsDisplay = (FlowPane) root1.lookup("#flowPaneProductsDisplay");
-				Stage stage = (Stage) btnCancelProductAgregation.getScene().getWindow();
+				Stage stage = (Stage) botonCancelar.getScene().getWindow();
 			    stage.close();
 	            
 				

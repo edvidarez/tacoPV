@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.ProductViewController">
+<AnchorPane prefHeight="901.0" prefWidth="592.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.ProductViewController">
    <children>
-      <Pane fx:id="ProductView" prefHeight="406.0" prefWidth="592.0" styleClass="background" stylesheets="@../src/application/css/application.css">
+      <Pane fx:id="ProductView" prefHeight="901.0" prefWidth="592.0" styleClass="background" stylesheets="@../src/application/css/application.css">
          <children>
             <Label fx:id="labelTituloProducto" layoutX="14.0" prefHeight="62.0" prefWidth="202.0" styleClass="label-header" stylesheets="@../src/application/css/application2.css" text="Productos">
                <font>
@@ -25,11 +25,11 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <FlowPane fx:id="flowPaneProductsDisplay" layoutX="14.0" layoutY="70.0" prefHeight="276.0" prefWidth="561.0" styleClass="split-pane" stylesheets="@../application/css/application.css">
+            <FlowPane fx:id="flowPaneProductsDisplay" layoutX="14.0" layoutY="70.0" prefHeight="747.0" prefWidth="561.0" styleClass="split-pane" stylesheets="@../application/css/application.css">
                <children>
                </children>
             </FlowPane>
-            <Button fx:id="btnCancelProductAgregation" cacheShape="false" layoutX="97.0" layoutY="350.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="155.0" text="Agregar" textFill="#a12626" textOverrun="CLIP">
+            <Button fx:id="botonAgregar" cacheShape="false" layoutX="97.0" layoutY="839.0" mnemonicParsing="false" onAction="#agregar" prefHeight="48.0" prefWidth="155.0" text="Agregar" textFill="#a12626" textOverrun="CLIP">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -44,7 +44,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button fx:id="botonCancelar" cacheShape="false" layoutX="377.0" layoutY="350.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="48.0" prefWidth="147.0" text="Cancelar" textFill="#a12626" textOverrun="CLIP">
+            <Button fx:id="botonCancelar" cacheShape="false" layoutX="368.0" layoutY="839.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="48.0" prefWidth="147.0" text="Cancelar" textFill="#a12626" textOverrun="CLIP">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>

@@ -107,10 +107,14 @@ public class Database extends Thread{
     			ps = (PreparedStatement) conObj.prepareStatement(query);
         		ps.setInt(1,id_venta);
         		ps.setInt(2,p.idProducto);
-        		ps.setInt(3, 1);
+        		ps.setInt(3, p.cantidad);
         		ps.setFloat(4, p.precio);
-        		System.out.println(ps);
-        		ps.executeUpdate();
+        		
+        		if(p.cantidad!=0)
+        		{
+        			ps.executeUpdate();
+        			System.out.println(ps);
+        		}
     			i++;
     		}
     	}
@@ -120,7 +124,7 @@ public class Database extends Thread{
     		ArrayList<Producto> productos = new ArrayList<Producto>();
     		while(rs.next())
     		{
-    			Producto p = new Producto(rs.getString("descripcion"), rs.getFloat("precio"), rs.getInt("ID_Producto"));
+    			Producto p = new Producto(rs.getString("descripcion"), rs.getFloat("precio"), rs.getInt("ID_Producto"), rs.getString("imagen"));
     			productos.add(p);
     		}
     		return productos;
@@ -156,9 +160,6 @@ public class Database extends Thread{
         }
     }
 
-    public void ModifyUser() {
-    	//mete tu codigo Ali
-    }
     void deleteData(String name) throws Exception 
     {
         String query = "delete from user where name = \""+name+"\"";
@@ -190,9 +191,70 @@ public class Database extends Thread{
 		return user;
 	}
 	
-	public User getUsers(String id) {
+	public ArrayList<User> getUsers() throws SQLException {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<User> users = new ArrayList<>();
+		String query = "SELECT * from user";
+		ResultSet rs = stObj.executeQuery(query);
+		while(rs.next())
+		{
+			User user = new User();
+			user.setId(rs.getInt("ID_User")); 
+			user.setEmail(rs.getString("email")); 
+			user.setPass(rs.getString("pass"));
+			user.setRole(rs.getInt("role"));
+			user.setRfc(rs.getString("RFC"));
+			user.setUsername(rs.getString("username"));
+			users.add(user);
+		}
+		return users;
 	}
+	
+	public void updateUser(int id, String email, String pass, int role, String rfc, String username) throws SQLException {
+		// TODO Auto-generated method stub
+		String query = "UPDATE user SET email = ? , pass = ? , role = ? , RFC = ? , username = ? WHERE ID_USER = ? ";
+    	PreparedStatement q = (PreparedStatement) conObj.prepareStatement(query);  
+		//String query = ";
+		//query = "UPDATE user(ID_User,email,pass,role,RFC,username) values(?,?,?,?,?,?) WHERE ID_User = " + id;
+		//PreparedStatement q = (PreparedStatement) conObj.prepareStatement(query);  
+    	q.setString(1, email);
+		q.setString(2, pass);
+		q.setInt(3, role);
+		q.setString(4, rfc);
+		q.setString(5, username);
+		q.setInt(6, id);
+    	System.out.println(q);
+    	Boolean a = q.execute();
+    	if(a)
+        {
+            System.out.println("Update Failed"); 
+        }
+        else
+        {
+            System.out.println("Update Successful");
+        }
+	}
+	
+	public void deleteUser(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		String query = "DELETE FROM user WHERE ID_USER = ? ";
+    	PreparedStatement q = (PreparedStatement) conObj.prepareStatement(query);  
+    	q.setInt(1, id);
+    	System.out.println(q);
+    	Boolean a = q.execute();
+    	if(a)
+        {
+            System.out.println("Delete Failed"); 
+        }
+        else
+        {
+            System.out.println("Delete Successful");
+        }
+	}
+	
+	
+	
+	
+	
 	
 }
