@@ -1,11 +1,13 @@
 package application;
 
+import java.io.IOException;
+
 public class Session {
 
 	   private static Session session = new Session( );
 	   private static String user;
 	   private static int Id;
-	
+	   public static Cliente cliente;
 	   
 	public static String getUser() {
 		return user;
@@ -15,7 +17,7 @@ public class Session {
 		Session.user = user;
 	}
 
-	public int getRole_() {
+	public static int getRole_() {
 		return role_;
 	}
 
@@ -37,7 +39,9 @@ public class Session {
 	   /* A private Constructor prevents any other
 	    * class from instantiating.
 	    */
-	   private Session() { }
+	   private Session() { 
+		  
+	   }
 
 	   /* Static 'instance' method */
 	   public static Session getInstance( ) {
@@ -48,7 +52,15 @@ public class Session {
 	   public void describeUser( ) {
 	      System.out.println("The user is:"+user+" and its role is "+role);
 	   }
-
+	   
+	   public void startClient() {
+		   try {
+				cliente = new Cliente();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	   }
 	public int getId() {
 		return Id;
 	}

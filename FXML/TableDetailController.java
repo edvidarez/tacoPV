@@ -5,6 +5,9 @@ import java.util.ResourceBundle;
 
 import application.Main;
 import application.Manager;
+import application.Producto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -55,8 +58,15 @@ public class TableDetailController implements javafx.fxml.Initializable {
 	
 	public void reloadData() {
 		Manager m = Manager.getInstance();
-		
-		listViewProductsInTable.setItems(m.Mesas.get(m.currentMesa.numero-1).olp);
+		ObservableList<String> olp = FXCollections.observableArrayList () ;
+		for(Producto p: m.Mesas.get(m.currentMesa.numero-1).productos)
+		{
+			if(p.cantidad!=0)
+			{
+				olp.add(p.descripcion+" "+p.cantidad);
+			}
+		}
+		listViewProductsInTable.setItems(olp);
 	}
 	
 	@Override	
