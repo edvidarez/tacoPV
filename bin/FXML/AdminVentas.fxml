@@ -22,18 +22,12 @@
          <children>
             <MenuBar id="menuBarAdminVentasMenu" fx:id="menuBarAdmin" HBox.hgrow="ALWAYS">
               <menus>
-                <Menu id="menuAdminVentasLenguaje" mnemonicParsing="false" text="Lenguaje">
+                <Menu id="menuAdminVentasLenguaje" fx:id="lenguage" mnemonicParsing="false" text="Lenguaje">
                   <items>
-                      <MenuItem id="menuItemAdminVentasEspañol" mnemonicParsing="false" text="Español" />
-                        <MenuItem id="menuItemAdminVentasIngles" mnemonicParsing="false" text="Inglés" />
+                      <MenuItem id="menuItemAdminVentasEspañol" mnemonicParsing="false" onAction="#SetEspanol" text="Español" />
+                        <MenuItem id="menuItemAdminVentasIngles" mnemonicParsing="false" onAction="#SetEnglish" text="Inglés" />
                   </items>
                 </Menu>
-                  <Menu id="menuAdminVentasRegion" mnemonicParsing="false" text="Region">
-                     <items>
-                        <MenuItem id="menuItemAdminVentasPesos" mnemonicParsing="false" text="Pesos" />
-                        <MenuItem id="menuItemAdminVentasDolares" mnemonicParsing="false" text="Dolares" />
-                     </items>
-                  </Menu>
                 <Menu id="menuAdminVentasUsuarios" fx:id="menuUsuarios" mnemonicParsing="false" text="Usuarios">
                   <items>
                     <MenuItem id="menuItemAdminVentasAgregarUsuario" fx:id="addUser" mnemonicParsing="false" onAction="#openAddUser" text="Agregar usuario" />
@@ -67,7 +61,7 @@
    <left>
       <VBox prefHeight="743.0" prefWidth="161.0" BorderPane.alignment="CENTER">
          <children>
-            <Label id="labelAdminVentasAdministrator" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="165.0" styleClass="button2" stylesheets="@../application/css/application2.css" text="Administrador" textAlignment="CENTER" />
+            <Label id="labelAdminVentasAdministrator" fx:id="admin2" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="165.0" styleClass="button2" stylesheets="@../application/css/application2.css" text="Administrador" textAlignment="CENTER" />
             <ImageView id="imageViewAdminVentasPerfil" fx:id="imageViewAdmin" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../src/application/img/userData.png" />

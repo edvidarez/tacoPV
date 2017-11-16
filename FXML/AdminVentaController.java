@@ -3,10 +3,12 @@ package FXML;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 import application.Database;
 import application.Main;
+import application.Session;
 import application.User;
 import application.UserTableView;
 import javafx.beans.value.ChangeListener;
@@ -67,10 +69,19 @@ public class AdminVentaController implements javafx.fxml.Initializable{
 	TableColumn<UserTableView, String> tableColumnUsernameAdminVentas;
 	
 	ObservableList<UserTableView> users;
-	
+	@FXML
+	Menu lenguage;
+	@FXML
+	Label admin2;
 	
 	@Override	
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+		lenguage.setText(rb.getString("lbl.lengua"));
+		menuUsuarios.setText(rb.getString("lbl.userz"));
+		admin2.setText(rb.getString("lbl.admiiii"));
+		btnAdminExit.setText(rb.getString("btn.sall"));
 		try {
 			populateViews();
 		} catch (ClassNotFoundException e) {
@@ -167,7 +178,20 @@ public class AdminVentaController implements javafx.fxml.Initializable{
 			
 		}
 	}
-	
+	public void SetEspanol() {
+		String resourcesLocation = "i18n.mensajes";
+		
+		Locale locale = new Locale("ES");
+		Session.resourcesLocation = resourcesLocation;
+		Session.locale = locale;
+		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+	}
+	public void SetEnglish() {
+		String resourcesLocation = "i18n.mensaje_en";
+		Locale locale = new Locale("EN");
+		Session.resourcesLocation = resourcesLocation;
+		Session.locale = locale;
+		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);	}
 	public void close() {
 		Stage stage = (Stage) btnAdminExit.getScene().getWindow();
 		stage.close();
