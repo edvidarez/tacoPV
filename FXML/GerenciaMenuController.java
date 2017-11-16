@@ -1,19 +1,23 @@
 package FXML;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Calendar;
+import java.util.ResourceBundle;
 
 import application.Main;
 import application.Manager;
+import application.Session;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class GerenciaMenuController {
+public class GerenciaMenuController implements Initializable {
 	@FXML
 	Button admMesas;
 	@FXML
@@ -22,7 +26,7 @@ public class GerenciaMenuController {
 	Label Gerente_date;
 	@FXML
 	Label GerenteTitulo;
-
+	
 	
 	public void currentDate(){					
 		Calendar now = Calendar.getInstance();
@@ -82,4 +86,15 @@ public class GerenciaMenuController {
 
 		currentDate();
 	}
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+		GerenteTitulo.setText(rb.getString("lbl.tilo"));
+		gerenteStats.setText(rb.getString("btn.stat"));
+		admMesas.setText(rb.getString("btn.admm"));
+		
+	}
+
 }

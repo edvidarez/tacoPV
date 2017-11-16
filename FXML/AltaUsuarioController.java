@@ -76,15 +76,21 @@ public void cancelar() throws IOException {
 	returnToParent();
 	
 }
-
+@FXML
+Label labelEmailMenu;
 @Override
 public void initialize(URL location, ResourceBundle resources) {
 	// TODO Auto-generated method stub
 	ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
-	labelAltausuarioTitulo.setText(rb.getString("lbl.titulo"));
-	
+	labelAltausuarioTitulo.setText(rb.getString("lbl.tialta"));
+	labelEmailMenu.setText(rb.getString("lbl.email"));
+	labelContrasenaMenu.setText(rb.getString("lbl.contra"));
+	labelRfcMenu.setText(rb.getString("lbl.RFC"));
+	labelNombreusuarioMenu.setText(rb.getString("lbl.Nombreus"));
+	labelRolMenu.setText(rb.getString("lbl.rol"));
+	botonAceptar.setText(rb.getString("btn.acept"));
+	botonCancelar.setText(rb.getString("btn.cancel"));
 }
-
 
 public void returnToParent() throws IOException {
 	FXMLLoader fxmlLoader = new FXMLLoader();

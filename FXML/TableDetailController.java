@@ -6,12 +6,14 @@ import java.util.ResourceBundle;
 import application.Main;
 import application.Manager;
 import application.Producto;
+import application.Session;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -69,8 +71,18 @@ public class TableDetailController implements javafx.fxml.Initializable {
 		listViewProductsInTable.setItems(olp);
 	}
 	
+	@FXML
+	Label label_titulo_detallemesa;
+	@FXML
+	Label labelProductos;
+	
 	@Override	
 	public void initialize(URL location, ResourceBundle resources) {
+		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+		label_titulo_detallemesa.setText(rb.getString("lbl.tidetalle"));
+		labelProductos.setText(rb.getString("lbl.productos"));
+		btnAddProductTableDetail.setText(rb.getString("btn.agragarpro"));
+		btnPayTableBill.setText(rb.getString("btn.pagarcuenta"));
 		
 		reloadData();
 	}

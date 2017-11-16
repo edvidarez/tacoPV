@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import application.Database;
 import application.Main;
+import application.Session;
 import application.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -107,10 +109,34 @@ public class ModificarUsuarioController implements Initializable{
 		textFieldContrasena.setText(user.getPass());
 		textFieldMURol.setText(String.valueOf(user.getRole()));
 	}
-
+	@FXML
+	Label labelRolMenu;
+	@FXML
+	Label labelNombreusuarioMenu;
+	@FXML
+	Label labelContrasenaMenu;
+	@FXML
+	Label labelRfcMenu;
+	@FXML
+	Label labelEmailMenu;
+	@FXML
+	Label labelEditarusuarioTitulo;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+
+			ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+			labelEditarusuarioTitulo.setText(rb.getString("lbl.tieditus"));
+			labelEmailMenu.setText(rb.getString("lbl.email"));
+			labelContrasenaMenu.setText(rb.getString("lbl.contra"));
+			labelRfcMenu.setText(rb.getString("lbl.rft"));
+			labelNombreusuarioMenu.setText(rb.getString("lbl.nombus"));
+			labelRolMenu.setText(rb.getString("lbl.rl"));
+			botonAceptar.setText(rb.getString("btn.acp"));
+			botonEliminar.setText(rb.getString("btn.elimus"));
+			botonCancelar.setText(rb.getString("btn.canc"));
+			
+		
 		disableElements(true);
 		try {
 			populateUsers();
@@ -191,5 +217,5 @@ public class ModificarUsuarioController implements Initializable{
 		username = textFieldMUUsername.getText();
 	}
 	
-	
+
 }
