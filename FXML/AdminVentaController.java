@@ -185,13 +185,22 @@ public class AdminVentaController implements javafx.fxml.Initializable{
 		Session.resourcesLocation = resourcesLocation;
 		Session.locale = locale;
 		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+		lenguage.setText(rb.getString("lbl.lengua"));
+		menuUsuarios.setText(rb.getString("lbl.userz"));
+		admin2.setText(rb.getString("lbl.admiiii"));
+		btnAdminExit.setText(rb.getString("btn.sall"));
 	}
 	public void SetEnglish() {
 		String resourcesLocation = "i18n.mensaje_en";
 		Locale locale = new Locale("EN");
 		Session.resourcesLocation = resourcesLocation;
 		Session.locale = locale;
-		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);	}
+		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+		lenguage.setText(rb.getString("lbl.lengua"));
+		menuUsuarios.setText(rb.getString("lbl.userz"));
+		admin2.setText(rb.getString("lbl.admiiii"));
+		btnAdminExit.setText(rb.getString("btn.sall"));
+	}
 	public void close() {
 		Stage stage = (Stage) btnAdminExit.getScene().getWindow();
 		stage.close();

@@ -43,7 +43,9 @@ public class Session {
 	    * class from instantiating.
 	    */
 	   private Session() { 
-		  
+		  locale = new Locale("ES");
+		  String resourcesLocation = "i18n.mensajes";
+		  Session.resourcesLocation = resourcesLocation;
 	   }
 
 	   /* Static 'instance' method */
