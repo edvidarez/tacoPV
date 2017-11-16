@@ -53,7 +53,12 @@ public class LoginController implements Initializable {
 	MenuItem espTxt;
 	@FXML
 	MenuItem engTxt;
-	
+	@FXML
+	Label labelUsuario;
+	@FXML
+	Label labelContrasena;
+	@FXML
+	Label labelRegion;
 	@FXML
 	public void engText(){
 		String resourcesLocation = "i18n.mensaje_en";
@@ -62,6 +67,11 @@ public class LoginController implements Initializable {
 		Session.locale = locale;
 		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
 		loginLabel.setText(rb.getString("lbl.login"));
+		labelUsuario.setText(rb.getString("lbl.usuario"));
+		labelContrasena.setText(rb.getString("lbl.contra"));
+		comboType.setPromptText(rb.getString("txt.select"));
+		loginBtn.setText(rb.getString("btn.login"));
+		labelRegion.setText(rb.getString("str.region"));
 	}
 	@FXML
 	public void espText(){
@@ -72,10 +82,14 @@ public class LoginController implements Initializable {
 		Session.locale = locale;
 		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
 		loginLabel.setText(rb.getString("lbl.login"));
+		labelUsuario.setText(rb.getString("lbl.usuario"));
+		labelContrasena.setText(rb.getString("lbl.contra"));
+		comboType.setPromptText(rb.getString("txt.select"));
+		loginBtn.setText(rb.getString("btn.login"));
+		labelRegion.setText(rb.getString("str.region"));
 		
 	}
 
-	@SuppressWarnings("static-access")
 	@FXML
 	private void login_Btn(){
 		checkEmployee(userLoginText.getText(),userLoginPass.getText(),comboType.getSelectionModel().getSelectedItem()); // esto va ver si es valido y ejecutara lo necesario para cambiar de stage
