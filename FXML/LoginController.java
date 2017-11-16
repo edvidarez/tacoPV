@@ -75,6 +75,7 @@ public class LoginController implements Initializable {
 		
 	}
 
+	@SuppressWarnings("static-access")
 	@FXML
 	private void login_Btn(){
 		checkEmployee(userLoginText.getText(),userLoginPass.getText(),comboType.getSelectionModel().getSelectedItem()); // esto va ver si es valido y ejecutara lo necesario para cambiar de stage
@@ -98,8 +99,6 @@ public class LoginController implements Initializable {
 			}
 			else
 			if(s.getRole_() ==3){ //empleado
-			
-				
 	            s.startClient();
 	            s.cliente.getMesas();
 	            FXMLLoader fxmlLoader = new FXMLLoader();
@@ -132,23 +131,6 @@ public class LoginController implements Initializable {
 				};
 				t2.start();
 				FXMLLoader fxmlLoader = new FXMLLoader();
-	            fxmlLoader.setLocation(Main.class.getResource("../FXML/ManageTables.fxml"));
-	            
-	            AnchorPane root1 = (AnchorPane) fxmlLoader.load();
-	            Stage stage = new Stage();
-	            //stage.initModality(Modality.WINDOW_MODAL);
-	            //stage.initStyle(StageStyle.DECORATED);
-	            stage.setTitle("Productos");
-	            stage.setScene(new Scene(root1));  
-	            stage.show();
-	           // s.startClient();
-	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
-	    	    stage2.close();
-			}
-			else
-			if(s.getRole_() == 2){ // gerente
-				
-				FXMLLoader fxmlLoader = new FXMLLoader();
 	            fxmlLoader.setLocation(Main.class.getResource("../FXML/GerenciaMenu.fxml"));
 	            
 	            AnchorPane root1 = (AnchorPane) fxmlLoader.load();
@@ -158,8 +140,14 @@ public class LoginController implements Initializable {
 	            stage.setTitle("Manager");
 	            stage.setScene(new Scene(root1));  
 	            stage.show();
+	           // s.startClient();
 	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
 	    	    stage2.close();
+			}
+			else
+			{ 
+				System.out.println("No user specified");
+					
 			}
             
 	       

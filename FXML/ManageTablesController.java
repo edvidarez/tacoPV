@@ -74,15 +74,18 @@ public class ManageTablesController implements Initializable {
 	@FXML
 	private void btnClose() {
 		try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(Main.class.getResource("../FXML/tacoAppFXML.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader();			
+			
+			fxmlLoader.setLocation(Main.class.getResource("../FXML/GerenciaMenu.fxml"));
+           
             AnchorPane root1 = (AnchorPane) fxmlLoader.load();
             Stage stage = new Stage();
-            stage.setTitle("Login");
+            stage.setTitle("User");
             stage.setScene(new Scene(root1));  
             stage.show();
             Stage stage2 = (Stage) btnCloseTableManagement.getScene().getWindow();
     	    stage2.close();
+    	    
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -10,7 +10,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.PieChart.Data;
 
 public class Database extends Thread{
     	Connection conObj;
@@ -251,10 +254,28 @@ public class Database extends Thread{
             System.out.println("Delete Successful");
         }
 	}
-	
-	
-	
-	
+	public ObservableList<Data> getProdctosReporte() {
+		ObservableList<Data> olist = FXCollections.observableArrayList();
+		String SQL ="select  (count(vd.cantidad) ) as cantidad,p.descripcion as producto"
+            	+ " from tacos.productos p join tacos.venta_d vd"
+            	+ " on p.ID_Producto = vd.ID_Producto"
+            	+ " Group by p.descripcion"
+            	+ " Order by  (count(vd.cantidad) ) desc;"; 
+		try {
+			
+		
+		ResultSet rs = conObj.createStatement().executeQuery(SQL);
+		
+		while(rs.next()){
+            //adding data on piechart data
+			olist.add(new PieChart.Data(rs.getString(2)+" "+rs.getInt(1),rs.getInt(1)));
+		}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return olist;
+	}
 	
 	
 }

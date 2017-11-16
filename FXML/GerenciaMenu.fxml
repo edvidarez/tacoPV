@@ -8,7 +8,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="194.0" prefWidth="466.0" styleClass="background" stylesheets="@../src/application/css/application.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.GerenciaMenuController">
    <children>
       <Button fx:id="gerenteStats" layoutX="165.0" layoutY="59.0" mnemonicParsing="false" onAction="#launchStats" text="Estadisticas" />
-      <Button fx:id="admMesas" layoutX="166.0" layoutY="102.0" mnemonicParsing="false" onAction="#admMesas" text="Adm mesas" />
+      <Button fx:id="admMesas" layoutX="166.0" layoutY="102.0" mnemonicParsing="false" onAction="#adm_Mesas" text="Adm mesas" />
       <Label fx:id="GerenteTitulo" layoutX="149.0" prefHeight="16.0" prefWidth="193.0" styleClass="label-header" stylesheets="@../src/application/css/application2.css" text="Gerente">
          <opaqueInsets>
             <Insets />
