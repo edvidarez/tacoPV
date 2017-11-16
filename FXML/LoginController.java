@@ -1,18 +1,9 @@
 package FXML;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.net.URL;
-import java.net.UnknownHostException;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
 import application.Database;
 import application.Main;
 import application.Manager;
@@ -102,10 +93,13 @@ public class LoginController implements Initializable {
 	            
 	            BorderPane root1 = (BorderPane) fxmlLoader.load();
 	            Stage stage = new Stage();
-	            //stage.initModality(Modality.WINDOW_MODAL);
-	            //stage.initStyle(StageStyle.DECORATED);
+	            GraphicsDevice gd =  GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	            int w = gd.getDisplayMode().getWidth();
+	            int h = gd.getDisplayMode().getHeight();
 	            stage.setTitle("Admin");
 	            stage.setScene(new Scene(root1)); 
+	            stage.setHeight(h);
+	            stage.setWidth(w);
 	            stage.setResizable(false);
 	            stage.show();
 	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
@@ -149,12 +143,9 @@ public class LoginController implements Initializable {
 	            
 	            AnchorPane root1 = (AnchorPane) fxmlLoader.load();
 	            Stage stage = new Stage();
-	            //stage.initModality(Modality.WINDOW_MODAL);
-	            //stage.initStyle(StageStyle.DECORATED);
 	            stage.setTitle("Manager");
 	            stage.setScene(new Scene(root1));  
 	            stage.show();
-	           // s.startClient();
 	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
 	    	    stage2.close();
 			}

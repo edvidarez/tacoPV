@@ -9,11 +9,15 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
+import javafx.scene.chart.XYChart;
+
 
 public class Database extends Thread{
     	Connection conObj;
@@ -270,6 +274,40 @@ public class Database extends Thread{
             //adding data on piechart data
 			olist.add(new PieChart.Data(rs.getString(2)+" "+rs.getInt(1),rs.getInt(1)));
 		}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return olist;
+	}
+	
+	public XYChart.Series<String,Number> getProdctosReporteB() {
+		XYChart.Series<String,Number> olist = new XYChart.Series<String,Number>();
+		String SQL ="select username uname , count(*) as ventas"
+            	+ " from tacos.venta v join tacos.user u"
+            	+ " on v.vendedor = u.ID_User"
+            	+ " group by uname;"; 
+		try {
+			
+		
+		ResultSet rs = conObj.createStatement().executeQuery(SQL);
+		   CategoryAxis xAxis = new CategoryAxis();
+	       xAxis.setLabel("Empleado");	 
+	       NumberAxis yAxis = new NumberAxis();
+	       yAxis.setLabel("Ventas");
+	       
+	       BarChart<String, Number> barChart = new BarChart<String, Number>(xAxis, yAxis);
+	      
+	       
+		while(rs.next()){
+            //adding data on piechart data
+			//olist.add(new BarChart.Data(rs.getString(1)+" "+rs.getInt(2),rs.getInt(2)));
+			 //BarChart<String, Number> barChart = new BarChart<String, Number>(xAxis, yAxis);
+			olist.getData().add(new XYChart.Data<String, Number>(rs.getString(1),rs.getInt(2)));
+			
+		}
+			barChart.getData().add(olist);
+			
 		}
 		catch(Exception e) {
 			e.printStackTrace();

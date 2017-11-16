@@ -37,18 +37,33 @@ public class GerenciaMenuController implements Initializable {
 		Gerente_date.setText(day+" / "+month+" / "+year);
 				
 	}
-	
-	@FXML
-	public void launchStats() throws Exception { // invoca a Estadisticas
-		
+	public void statsPie() throws Exception {
 		FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(Main.class.getResource("../FXML/pieChart1.fxml"));
         
         AnchorPane root1 = (AnchorPane) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Productos");
+        stage.setTitle("Productos vendidos");
         stage.setScene(new Scene(root1));  
         stage.show();
+	}
+	public void statsBar() throws Exception {
+		FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(Main.class.getResource("../FXML/barChar1.fxml"));
+        
+        AnchorPane root1 = (AnchorPane) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Ventas realizadas");
+        stage.setScene(new Scene(root1));  
+        stage.show();
+	}
+	@FXML
+	public void launchStats() throws Exception { // invoca a Estadisticas
+		statsPie();
+		statsBar();
+        //
+        
+        
         
 	}
 	@FXML
