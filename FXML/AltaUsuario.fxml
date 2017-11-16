@@ -12,10 +12,10 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../src/application/css/application.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.AltaUsuarioController">
    <children>
       <Label fx:id="labelAltausuarioTitulo" layoutX="23.0" layoutY="14.0" styleClass="label-header" stylesheets="@../application/css/application2.css" text="ALTA DE USUARIO" />
-      <Label fx:id="labelEmailMenu" layoutX="29.0" layoutY="86.0" styleClass="label2" stylesheets="@../application/css/application2.css" text="Email:" />
-      <Label fx:id="labelContrasenaMenu" layoutX="23.0" layoutY="127.0" styleClass="label2" stylesheets="@../application/css/application2.css" text="Contraseña:" />
-      <Label fx:id="labelRfcMenu" layoutX="23.0" layoutY="171.0" styleClass="label2" stylesheets="@../application/css/application2.css" text="R.FC:" />
-      <Label fx:id="labelNombreusuarioMenu" layoutX="23.0" layoutY="215.0" styleClass="label2" stylesheets="@../application/css/application2.css" text="Nombre de usuario:" />
+      <Label fx:id="labelEmailMenu" layoutX="17.0" layoutY="98.0" styleClass="label2" stylesheets="@../application/css/application2.css" text="Email:" />
+      <Label fx:id="labelContrasenaMenu" layoutX="17.0" layoutY="137.0" styleClass="label2" stylesheets="@../application/css/application2.css" text="Contraseña:" />
+      <Label fx:id="labelRfcMenu" layoutX="19.0" layoutY="176.0" styleClass="label2" stylesheets="@../application/css/application2.css" text="R.FC:" />
+      <Label fx:id="labelNombreusuarioMenu" layoutX="19.0" layoutY="219.0" styleClass="label2" stylesheets="@../application/css/application2.css" text="Nombre de usuario:" />
       <Button fx:id="botonAceptar" cacheShape="false" layoutX="135.0" layoutY="329.0" mnemonicParsing="false" onAction="#insert_user" prefHeight="48.0" prefWidth="108.0" text="Aceptar" textFill="#a12626" textOverrun="CLIP">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
@@ -49,9 +49,9 @@
       <Label fx:id="labelRolMenu" layoutX="27.0" layoutY="260.0" styleClass="label2" stylesheets="@../application/css/application2.css" text="Rol:" />
       <TextField fx:id="textboxEmail" layoutX="123.0" layoutY="83.0" prefHeight="30.0" prefWidth="453.0" />
       <TextField fx:id="textboxContrasena" layoutX="123.0" layoutY="131.0" prefHeight="30.0" prefWidth="453.0" />
-      <TextField fx:id="textboxRfc" layoutX="123.0" layoutY="166.0" prefHeight="30.0" prefWidth="453.0" />
-      <TextField fx:id="textboxNombreusuario" layoutX="189.0" layoutY="210.0" prefHeight="30.0" prefWidth="384.0" />
-      <TextField fx:id="textboxRol" layoutX="82.0" layoutY="255.0" prefHeight="30.0" prefWidth="384.0" />
+      <TextField fx:id="textboxRfc" layoutX="123.0" layoutY="170.0" prefHeight="30.0" prefWidth="453.0" />
+      <TextField fx:id="textboxNombreusuario" layoutX="189.0" layoutY="213.0" prefHeight="30.0" prefWidth="390.0" />
+      <TextField fx:id="textboxRol" layoutX="82.0" layoutY="255.0" prefHeight="30.0" prefWidth="54.0" />
 
  </children>
 </AnchorPane>

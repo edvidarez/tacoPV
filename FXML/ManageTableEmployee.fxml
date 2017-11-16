@@ -16,7 +16,7 @@
    <children>
       <Pane prefHeight="470.0" prefWidth="592.0" styleClass="background" stylesheets="@../src/application/css/application.css">
          <children>
-            <Label fx:id="labelAdministrarmesa" layoutX="14.0" styleClass="label-header" stylesheets="@../src/application/css/application2.css" text="Administrar mesa">
+            <Label fx:id="labelAdministrarmesa" layoutX="14.0" styleClass="label-header" stylesheets="@../src/application/css/application2.css" text="Administrar mesas">
                <font>
                   <Font size="18.0" />
                </font>

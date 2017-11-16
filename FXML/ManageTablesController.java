@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -74,28 +75,34 @@ public class ManageTablesController implements Initializable {
 	@FXML
 	private void btnClose() {
 		try {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(Main.class.getResource("../FXML/tacoAppFXML.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader();			
+			
+			fxmlLoader.setLocation(Main.class.getResource("../FXML/GerenciaMenu.fxml"));
+           
             AnchorPane root1 = (AnchorPane) fxmlLoader.load();
             Stage stage = new Stage();
-            stage.setTitle("Login");
+            stage.setTitle("User");
             stage.setScene(new Scene(root1));  
             stage.show();
             Stage stage2 = (Stage) btnCloseTableManagement.getScene().getWindow();
     	    stage2.close();
+    	    
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 	}
+	@FXML
+	Label labelAdministrarmesa;
 	
 	@Override	
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("inicializado todo");
-		if(Session.getRole_()==3) {
-			System.out.println("Empleadooooooooo0o0o0o0o0o");
-			
-		}
+		// TODO Auto-generated method stub
+		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+		labelAdministrarmesa.setText(rb.getString("lbl.tiadminmesa"));
+		btnAddTable.setText(rb.getString("btn.añadir"));
+		btnCloseTableManagement.setText(rb.getString("btn.cerrar"));
+		
 		
 	}
 	

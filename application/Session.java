@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.util.Locale;
 
 public class Session {
 
@@ -8,6 +9,8 @@ public class Session {
 	   private static String user;
 	   private static int Id;
 	   public static Cliente cliente;
+	   public static Locale locale;
+	   public static String resourcesLocation;
 	   
 	public static String getUser() {
 		return user;
@@ -40,7 +43,9 @@ public class Session {
 	    * class from instantiating.
 	    */
 	   private Session() { 
-		  
+		  locale = new Locale("ES");
+		  String resourcesLocation = "i18n.mensajes";
+		  Session.resourcesLocation = resourcesLocation;
 	   }
 
 	   /* Static 'instance' method */

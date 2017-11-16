@@ -31,7 +31,7 @@
                   <ListView fx:id="listViewProductsInTable" prefHeight="308.0" prefWidth="583.0" />
                </content>
             </ScrollPane>
-            <Button fx:id="btnAddProductTableDetail" cacheShape="false" layoutX="25.0" layoutY="384.0" mnemonicParsing="false" onAction="#btnAddProductTableDetail" prefHeight="48.0" prefWidth="176.0" text="Agregar Producto" textFill="#a12626" textOverrun="CLIP">
+            <Button fx:id="btnAddProductTableDetail" cacheShape="false" layoutX="25.0" layoutY="384.0" mnemonicParsing="false" onAction="#btnAddProductTableDetail" prefHeight="48.0" prefWidth="176.0" text="Productos" textFill="#a12626" textOverrun="CLIP">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -46,7 +46,7 @@
                   </Lighting>
                </effect>
             </Button>
-            <Button fx:id="btnPayTableBill" cacheShape="false" layoutX="224.0" layoutY="387.0" mnemonicParsing="false" onAction="#btnPayTableBill" prefHeight="48.0" prefWidth="150.0" text="Pagar Cuenta" textFill="#a12626" textOverrun="CLIP">
+            <Button fx:id="btnPayTableBill" cacheShape="false" layoutX="403.0" layoutY="384.0" mnemonicParsing="false" onAction="#btnPayTableBill" prefHeight="48.0" prefWidth="150.0" text="Pagar Cuenta" textFill="#a12626" textOverrun="CLIP">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
@@ -57,21 +57,6 @@
                      </bumpInput>
                      <light>
                         <Light.Distant color="LIME" />
-                     </light>
-                  </Lighting>
-               </effect>
-            </Button>
-            <Button fx:id="btnDeleteProduct" cacheShape="false" layoutX="397.0" layoutY="384.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="170.0" text="Eliminar Producto" textFill="#a12626" textOverrun="CLIP">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-               <effect>
-                  <Lighting diffuseConstant="1.35" specularConstant="0.0" specularExponent="12.56" surfaceScale="1.73">
-                     <bumpInput>
-                        <Shadow />
-                     </bumpInput>
-                     <light>
-                        <Light.Distant color="RED" />
                      </light>
                   </Lighting>
                </effect>

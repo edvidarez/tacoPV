@@ -22,18 +22,12 @@
          <children>
             <MenuBar id="menuBarAdminVentasMenu" fx:id="menuBarAdmin" HBox.hgrow="ALWAYS">
               <menus>
-                <Menu id="menuAdminVentasLenguaje" mnemonicParsing="false" text="Lenguaje">
+                <Menu id="menuAdminVentasLenguaje" fx:id="lenguage" mnemonicParsing="false" text="Lenguaje">
                   <items>
-                      <MenuItem id="menuItemAdminVentasEspañol" mnemonicParsing="false" text="Español" />
-                        <MenuItem id="menuItemAdminVentasIngles" mnemonicParsing="false" text="Inglés" />
+                      <MenuItem id="menuItemAdminVentasEspañol" mnemonicParsing="false" onAction="#SetEspanol" text="Español" />
+                        <MenuItem id="menuItemAdminVentasIngles" mnemonicParsing="false" onAction="#SetEnglish" text="Inglés" />
                   </items>
                 </Menu>
-                  <Menu id="menuAdminVentasRegion" mnemonicParsing="false" text="Region">
-                     <items>
-                        <MenuItem id="menuItemAdminVentasPesos" mnemonicParsing="false" text="Pesos" />
-                        <MenuItem id="menuItemAdminVentasDolares" mnemonicParsing="false" text="Dolares" />
-                     </items>
-                  </Menu>
                 <Menu id="menuAdminVentasUsuarios" fx:id="menuUsuarios" mnemonicParsing="false" text="Usuarios">
                   <items>
                     <MenuItem id="menuItemAdminVentasAgregarUsuario" fx:id="addUser" mnemonicParsing="false" onAction="#openAddUser" text="Agregar usuario" />
@@ -52,13 +46,11 @@
                <content>
                   <TableView id="tableViewadminVentasTabla" fx:id="tableViewAdmin" prefHeight="768.0" prefWidth="1117.0" tableMenuButtonVisible="true">
                     <columns>
-                      <TableColumn id="tableColumnAdminVentasID" prefWidth="96.0" text="ID" />
-                        <TableColumn id="tableColumnAdminVentasRol" prefWidth="134.0" text="Rol" />
-                      <TableColumn id="tableColumnAdminVentasEmpleado" prefWidth="160.0" text="Empleado" />
-                        <TableColumn id="tableColumnAdminVentasTelefono" prefWidth="144.0" text="Telefono" />
-                        <TableColumn id="tableColumnAdminVentasDomicilio" prefWidth="155.0" text="Domicilio" />
-                        <TableColumn id="tableColumnAdminVentasEmail" prefWidth="152.0" text="E-mail" />
-                        <TableColumn id="tableColumnAdminVentasCuentaBancaria" prefWidth="214.0" text="Cuenta bancaria" />
+                      <TableColumn id="tableColumnAdminVentasID" fx:id="tableColumnIDAdminVentas" prefWidth="181.0" text="ID" />
+                        <TableColumn id="tableColumnAdminVentasRol" fx:id="tableColumnEmailAdminVentas" prefWidth="171.0" text="email" />
+                      <TableColumn id="tableColumnAdminVentasEmpleado" fx:id="tableColumnRoleAdminVentas" prefWidth="171.0" text="role" />
+                        <TableColumn id="tableColumnAdminVentasTelefono" fx:id="tableColumnRFCAdminVentas" prefWidth="248.0" text="RFC" />
+                        <TableColumn id="tableColumnAdminVentasDomicilio" fx:id="tableColumnUsernameAdminVentas" prefWidth="254.0" text="username" />
                     </columns>
                   </TableView>
                </content>
@@ -69,13 +61,13 @@
    <left>
       <VBox prefHeight="743.0" prefWidth="161.0" BorderPane.alignment="CENTER">
          <children>
-            <Label id="labelAdminVentasAdministrator" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="165.0" styleClass="button2" stylesheets="@../application/css/application2.css" text="Administrador" textAlignment="CENTER" />
+            <Label id="labelAdminVentasAdministrator" fx:id="admin2" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="165.0" styleClass="button2" stylesheets="@../application/css/application2.css" text="Administrador" textAlignment="CENTER" />
             <ImageView id="imageViewAdminVentasPerfil" fx:id="imageViewAdmin" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../src/application/img/userData.png" />
                </image>
             </ImageView>
-            <Button id="buttonAdminVentas" fx:id="btnAdminExit" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="130.0" text="Salir" textAlignment="CENTER">
+            <Button id="buttonAdminVentas" fx:id="btnAdminExit" alignment="CENTER" cancelButton="true" contentDisplay="CENTER" mnemonicParsing="false" onAction="#close" prefHeight="28.0" prefWidth="130.0" text="Salir" textAlignment="CENTER">
                <padding>
                   <Insets left="50.0" right="50.0" />
                </padding>

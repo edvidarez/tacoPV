@@ -1,17 +1,9 @@
 package FXML;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.net.URL;
-import java.net.UnknownHostException;
+import java.util.Locale;
 import java.util.ResourceBundle;
-
 import application.Database;
 import application.Main;
 import application.Manager;
@@ -26,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -47,6 +40,46 @@ public class LoginController implements Initializable {
 	Hyperlink loginForgPass;
 	@FXML
 	Label loginLabel;
+	@FXML
+	MenuItem espTxt;
+	@FXML
+	MenuItem engTxt;
+	@FXML
+	Label labelUsuario;
+	@FXML
+	Label labelContrasena;
+	@FXML
+	Label labelRegion;
+	@FXML
+	public void engText(){
+		String resourcesLocation = "i18n.mensaje_en";
+		Locale locale = new Locale("EN");
+		Session.resourcesLocation = resourcesLocation;
+		Session.locale = locale;
+		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+		loginLabel.setText(rb.getString("lbl.login"));
+		labelUsuario.setText(rb.getString("lbl.usuario"));
+		labelContrasena.setText(rb.getString("lbl.contra"));
+		comboType.setPromptText(rb.getString("txt.select"));
+		loginBtn.setText(rb.getString("btn.login"));
+		labelRegion.setText(rb.getString("str.region"));
+	}
+	@FXML
+	public void espText(){
+		String resourcesLocation = "i18n.mensajes";
+		
+		Locale locale = new Locale("ES");
+		Session.resourcesLocation = resourcesLocation;
+		Session.locale = locale;
+		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+		loginLabel.setText(rb.getString("lbl.login"));
+		labelUsuario.setText(rb.getString("lbl.usuario"));
+		labelContrasena.setText(rb.getString("lbl.contra"));
+		comboType.setPromptText(rb.getString("txt.select"));
+		loginBtn.setText(rb.getString("btn.login"));
+		labelRegion.setText(rb.getString("str.region"));
+		
+	}
 
 	@FXML
 	private void login_Btn(){
@@ -60,10 +93,13 @@ public class LoginController implements Initializable {
 	            
 	            BorderPane root1 = (BorderPane) fxmlLoader.load();
 	            Stage stage = new Stage();
-	            //stage.initModality(Modality.WINDOW_MODAL);
-	            //stage.initStyle(StageStyle.DECORATED);
+	            GraphicsDevice gd =  GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	            int w = gd.getDisplayMode().getWidth();
+	            int h = gd.getDisplayMode().getHeight();
 	            stage.setTitle("Admin");
 	            stage.setScene(new Scene(root1)); 
+	            stage.setHeight(h);
+	            stage.setWidth(w);
 	            stage.setResizable(false);
 	            stage.show();
 	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
@@ -71,8 +107,6 @@ public class LoginController implements Initializable {
 			}
 			else
 			if(s.getRole_() ==3){ //empleado
-			
-				
 	            s.startClient();
 	            s.cliente.getMesas();
 	            FXMLLoader fxmlLoader = new FXMLLoader();
@@ -105,18 +139,20 @@ public class LoginController implements Initializable {
 				};
 				t2.start();
 				FXMLLoader fxmlLoader = new FXMLLoader();
-	            fxmlLoader.setLocation(Main.class.getResource("../FXML/ManageTables.fxml"));
+	            fxmlLoader.setLocation(Main.class.getResource("../FXML/GerenciaMenu.fxml"));
 	            
 	            AnchorPane root1 = (AnchorPane) fxmlLoader.load();
 	            Stage stage = new Stage();
-	            //stage.initModality(Modality.WINDOW_MODAL);
-	            //stage.initStyle(StageStyle.DECORATED);
-	            stage.setTitle("Productos");
+	            stage.setTitle("Manager");
 	            stage.setScene(new Scene(root1));  
 	            stage.show();
-	           // s.startClient();
 	            Stage stage2 = (Stage) loginBtn.getScene().getWindow();
 	    	    stage2.close();
+			}
+			else
+			{ 
+				System.out.println("No user specified");
+					
 			}
             
 	       

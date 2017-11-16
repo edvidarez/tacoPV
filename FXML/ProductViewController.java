@@ -59,8 +59,19 @@ public class ProductViewController implements Initializable {
 	    stage.close();
 	}
 	ArrayList<Producto> productos;
+	@FXML
+	Label labelTituloProducto;
+	@FXML
+	Label labelDisponibleagregar;
 	@Override	
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		ResourceBundle rb = ResourceBundle.getBundle(Session.resourcesLocation,Session.locale);
+		labelTituloProducto.setText(rb.getString("lbl.tipro"));
+		labelDisponibleagregar.setText(rb.getString("lbl.dispag"));
+		botonAgregar.setText(rb.getString("btn.add"));
+		botonCancelar.setText(rb.getString("btn.cancel"));
+		
 		Database d;
 		try {
 			
